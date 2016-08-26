@@ -1,0 +1,50 @@
+<ion-view title="Find Ride">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <!--social sign up section-->
+    <ion-content id="find-ride">
+        <div class="app-icon">
+            <img src="img/find-ride.png" class="md-card-image">
+        </div>
+        <h3 class="soft-header padding-top padding-bottom text-center">Enter your location and destination to search for a ride.</h3>
+
+        <!--input section-->
+
+        <md-list>
+
+            <!--<md-list-item>
+                <md-input-container md-no-float="" class="md-list-item-full-width">
+                    <input ng-model="findride.from" placeholder="Origin">
+                </md-input-container>
+            </md-list-item>
+            <md-list-item>
+                <md-input-container md-no-float="" class="md-list-item-full-width">
+                    <input ng-model="findride.to" placeholder="Destination">
+                </md-input-container>
+            </md-list-item>-->
+            <md-list-item>
+                <md-input-container md-no-float="" class="md-list-item-full-width">
+                    <ion-google-place placeholder="Your departure location" info="start" id="startLocation" ng-model="findride.from" />
+                </md-input-container>
+            </md-list-item>
+            <md-list-item>
+                <md-input-container md-no-float="" class="md-list-item-full-width">
+                    <ion-google-place placeholder="Your destination" info="end" id="endLocation" ng-model="findride.to" />
+                </md-input-container>
+            </md-list-item>
+
+            <div class="text-center">
+                <button class="md-raised social-button md-button md-default-theme material-background">Search</button>
+            </div>
+
+        </md-list>
+
+        <!--end input section-->
+
+    </ion-content><!--end social sign up section-->
+</ion-view>
