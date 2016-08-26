@@ -12,36 +12,39 @@
             <img src="img/find-ride.png" class="md-card-image">
         </div>
         <h3 class="soft-header padding-top padding-bottom text-center">Enter your location and destination to search for a ride.</h3>
+        <p ng-show="errorMessage" class="text-center" style="color: red;">{{errorMessage}}</p>
 
         <!--input section-->
+        <form class="search-form" ng-submit="search(findride)">
+            <md-list>
+                <md-list-item>
+                    <md-input-container md-no-float="" class="md-list-item-full-width">
+                        <ion-google-place placeholder="Your departure location" info="start" id="startLocation" ng-model="findride.from" />
+                    </md-input-container>
+                </md-list-item>
+                <md-list-item>
+                    <md-input-container md-no-float="" class="md-list-item-full-width">
+                        <ion-google-place placeholder="Your destination" info="end" id="endLocation" ng-model="findride.to" />
+                    </md-input-container>
+                </md-list-item>
 
-        <md-list>
+                <div class="text-center">
+                    <button class="md-raised social-button md-button md-default-theme material-background">Search</button>
+                </div>
+            </md-list>
+        </form>
 
-            <!--<md-list-item>
-                <md-input-container md-no-float="" class="md-list-item-full-width">
-                    <input ng-model="findride.from" placeholder="Origin">
-                </md-input-container>
+        <div ng-show="nothingfound">No ride found with the criteria.</div>
+        <md-list flex ng-show="found">
+            <md-subheader class="md-no-sticky">3 Rides found</md-subheader>
+            <md-list-item class="md-3-line">
+                <img ng-src="" src="img/find-ride.png" class="md-avatar" alt="" />
+                <div class="md-list-item-text" layout="column">
+                    <h3>Ride 1</h3>
+                    <h4>mini descr</h4>
+                    <p>Lorem Ipsum dolor sit amit senur</p>
+                </div>
             </md-list-item>
-            <md-list-item>
-                <md-input-container md-no-float="" class="md-list-item-full-width">
-                    <input ng-model="findride.to" placeholder="Destination">
-                </md-input-container>
-            </md-list-item>-->
-            <md-list-item>
-                <md-input-container md-no-float="" class="md-list-item-full-width">
-                    <ion-google-place placeholder="Your departure location" info="start" id="startLocation" ng-model="findride.from" />
-                </md-input-container>
-            </md-list-item>
-            <md-list-item>
-                <md-input-container md-no-float="" class="md-list-item-full-width">
-                    <ion-google-place placeholder="Your destination" info="end" id="endLocation" ng-model="findride.to" />
-                </md-input-container>
-            </md-list-item>
-
-            <div class="text-center">
-                <button class="md-raised social-button md-button md-default-theme material-background">Search</button>
-            </div>
-
         </md-list>
 
         <!--end input section-->

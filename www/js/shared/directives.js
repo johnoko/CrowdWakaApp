@@ -53,7 +53,6 @@ appServices.factory('localStorage', function ($filter, $window) {
         getObject: function (key) {
             return JSON.parse($window.localStorage[key] || '{}');
         }
-
     };
 });//End LocalStorage service.
 
