@@ -120,34 +120,44 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
     
     $scope.changePassword=function(u){
         ionLoading.show();
-        console.log("MemberID: "+localStorage.get('memberid'));
-        var profileData='?type=change_password&iMemberId='+localStorage.get('memberid')+'&OldPassword='+u.vOldPassword+'&Password='+u.vNewPassword;
-        $http.get(localStorage.get('su')+profileData)
-            .success(function (response){
-                console.log(response[0].message);
-                if(response[0].success=='1'){
-                    $scope.message = response[0].message;
-                    $scope.showAlert(response[0].message);
-                    $timeout(
-                        function () {
-                            $scope.onLoadMe();
-                            $state.go('app.profile');
-                        },
-                        5000
-                    )
-                }
-                else
-                {
-                    $scope.showAlert(response[0].message);
-                   /* $timeout(
-                        function () {
-                            $scope.onLoadMe();
-                            $state.go('app.profile');
-                        },
-                        5000 ) */
-                }
-                ionLoading.hide();
-            });
+       // console.log("MemberID: "+localStorage.get('memberid'));
+       
+       if(u.vNewPassword!=u.vNewPassword2)
+       {
+            $scope.showAlert("New password and Re-Enter Not Same");
+             ionLoading.hide();
+       }
+       else
+       {
+       
+            var profileData='?type=change_password&iMemberId='+localStorage.get('memberid')+'&OldPassword='+u.vOldPassword+'&Password='+u.vNewPassword;
+            $http.get(localStorage.get('su')+profileData)
+                .success(function (response){
+                    //console.log(response[0].message);
+                    if(response[0].success=='1'){
+                        $scope.message = response[0].message;
+                        $scope.showAlert(response[0].message);
+                        $timeout(
+                            function () {
+                                $scope.onLoadMe();
+                                $state.go('app.profile');
+                            },
+                            5000
+                        )
+                    }
+                    else
+                    {
+                        $scope.showAlert(response[0].message);
+                       /* $timeout(
+                            function () {
+                                $scope.onLoadMe();
+                                $state.go('app.profile');
+                            },
+                            5000 ) */
+                    }
+                    ionLoading.hide();
+                });
+       }
     };
     
      $scope.showAlert = function ($content) {
