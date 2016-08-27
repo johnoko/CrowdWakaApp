@@ -40,7 +40,7 @@ appControllers.controller('authCtrl', function ($scope, $http, $state, $mdToast,
     $scope.recoverPassword = function (loginData) {
         ionLoading.show();
         var su = localStorage.get('su');
-        $http.get(localStorage.get('su')+'?type=login&vEmail='+loginData.email+'&vDeviceType=Android')
+        $http.get(localStorage.get('su')+'?type=forgotpass&vEmail='+loginData.email+'&vDeviceType=Android')
             .success(function(response,status,headers,config){
                 console.log(response[0].action);
                 console.log(status);
