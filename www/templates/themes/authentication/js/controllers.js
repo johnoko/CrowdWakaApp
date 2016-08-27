@@ -57,7 +57,7 @@ appControllers.controller('authCtrl', function ($scope, $http, $state, $mdToast,
                 }
             }).error(function(err,status){
                 ionLoading.hide();
-                $scope.isLoginFailed = 2;
+                $scope.isLoginFailed = 3;
         });
         //$state.go('app.dashboard');
     };
