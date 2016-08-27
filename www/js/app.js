@@ -819,11 +819,6 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         templateUrl: "templates/themes/menu-dashboard/html/menu-dashboard.html",
                         controller: "menuDashboardCtrl"
                     }
-                },
-                onEnter: function ($state, Auth) {
-                    if(!Auth.isLoggedIn()){
-                        $state.go('app.Login');
-                    }
                 }
             })
             .state('app.expense', {
