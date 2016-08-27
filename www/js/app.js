@@ -606,6 +606,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+            .state('app.recoverPassword', {
+                url: "/recoverPassword",
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/themes/authentication/html/recoverPassword.html"
+                    }
+                }
+            })
             .state('app.productList', {
                 url: "/productList",
                 views: {

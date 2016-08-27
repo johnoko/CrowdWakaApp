@@ -36,6 +36,31 @@ appControllers.controller('authCtrl', function ($scope, $http, $state, $mdToast,
         //$state.go('app.dashboard');
 
     };
+    
+    $scope.recoverPassword = function (loginData) {
+        ionLoading.show();
+        var su = localStorage.get('su');
+        $http.get(localStorage.get('su')+'?type=login&vEmail='+loginData.email+'&vDeviceType=Android')
+            .success(function(response,status,headers,config){
+                console.log(response[0].action);
+                console.log(status);
+                if(status == 200){ 
+                    if(response[0].action == 1)
+                    {
+                        ionLoading.hide();
+                        $scope.isLoginFailed = 1;
+                    }
+                    else {
+                        ionLoading.hide();
+                        $scope.isLoginFailed = 3;
+                    }
+                }
+            }).error(function(err,status){
+                ionLoading.hide();
+                $scope.isLoginFailed = 2;
+        });
+        //$state.go('app.dashboard');
+    };
 
     // showConfirmDialog for show alert box.
     $scope.showConfirmDialog = function ($event) {

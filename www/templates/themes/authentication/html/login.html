@@ -18,7 +18,8 @@
             <div>
                 <img src="img/app_icon.png"/>
             </div>
-            <div ng-show="isLoginFailed==1">Login Failed</div>
+            <div ng-show="isLoginFailed==1" style="background:red; color:white; padding:10px; width:auto" >Login Failed - Try again!</div>
+            <div ng-show="isLoginFailed==1" style="margin-bottom:20px; font-size:90%"><a href="#/app/recoverPassword">Recover Password</a></div>
             <div class="sub-header"><strong>Sign in to CrowdWaka</strong></div>
 
             <div id="fakeLogin">
