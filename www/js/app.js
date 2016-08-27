@@ -938,6 +938,11 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         templateUrl: "templates/profile/html/profile.html",
                         controller: "profileViewCtrl"
                     }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
                 }
             })
             .state('app.editProfile', {
@@ -946,6 +951,11 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     'menuContent': {
                         templateUrl: "templates/profile/html/edit-profile.html",
                         controller: "profileCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
                     }
                 }
             })

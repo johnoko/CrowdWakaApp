@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52f22f08-05f6-4ee7-bec4-2e628dafca2c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/shared/directives.js" afterPath="$PROJECT_DIR$/www/js/shared/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/themes/authentication/html/login.html" afterPath="$PROJECT_DIR$/www/templates/themes/authentication/html/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/themes/authentication/js/controllers.js" afterPath="$PROJECT_DIR$/www/templates/themes/authentication/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/themes/menu-dashboard/js/controllers.js" afterPath="$PROJECT_DIR$/www/templates/themes/menu-dashboard/js/controllers.js" />
     </list>
     <ignored path="CrowdWakaApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="54" column="192" selection-start-line="54" selection-start-column="192" selection-end-line="54" selection-end-column="192" />
+            <state relative-caret-position="11266">
+              <caret line="945" column="17" selection-start-line="945" selection-start-column="17" selection-end-line="945" selection-end-column="17" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -76,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/themes/menu-dashboard/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
@@ -110,11 +105,11 @@
         <option value="$PROJECT_DIR$/www/templates/ride/js/controllers.js" />
         <option value="$PROJECT_DIR$/www/templates/themes/menu-dashboard/html/menu-dashboard.html" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/js/shared/directives.js" />
         <option value="$PROJECT_DIR$/www/templates/themes/authentication/html/login.html" />
         <option value="$PROJECT_DIR$/www/templates/themes/authentication/js/controllers.js" />
         <option value="$PROJECT_DIR$/www/templates/themes/menu-dashboard/js/controllers.js" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
       </list>
     </option>
   </component>
@@ -488,12 +483,12 @@
       <workItem from="1472238596127" duration="180000" />
       <workItem from="1472239335007" duration="8949000" />
       <workItem from="1472257225351" duration="14000" />
-      <workItem from="1472257957560" duration="6409000" />
+      <workItem from="1472257957560" duration="7136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15582000" />
+    <option name="totallyTimeSpent" value="16309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -822,16 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="54" column="192" selection-start-line="54" selection-start-column="192" selection-end-line="54" selection-end-column="192" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/shared/directives.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -882,6 +867,16 @@
         <state relative-caret-position="54">
           <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11266">
+          <caret line="945" column="17" selection-start-line="945" selection-start-column="17" selection-end-line="945" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
