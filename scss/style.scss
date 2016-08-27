@@ -2984,3 +2984,22 @@ hr {
   border-bottom-color: rgba(0,0,0,.12);
   border-bottom-width: 1px;
 }
+
+.popup-container .popup{
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.popup-container .popup-head{
+  border-bottom: none !important;
+  text-align: left;
+  font-weight:bold !important;
+}
+
+.popup-container .popup-buttons button{
+  background: none !important;
+  border: none !important;
+  color: #4caf50;
+  padding:0 !important;
+}
