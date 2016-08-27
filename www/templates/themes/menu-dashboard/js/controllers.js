@@ -1,5 +1,6 @@
 // Controller of menu dashboard page.
-appControllers.controller('menuDashboardCtrl', function ($scope, $state, $mdToast, localStorage, $ionicPopup) {
+appControllers.controller('menuDashboardCtrl', function ($scope, $state, $mdToast, localStorage, $ionicPopup, $ionicSideMenuDelegate) {
+    $ionicSideMenuDelegate.canDragContent(true);
     //ShowToast for show toast when user press button.
     $scope.showToast = function (menuName) {
         //Calling $mdToast.show to show toast.

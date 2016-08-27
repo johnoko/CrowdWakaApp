@@ -77,3 +77,17 @@ appServices.factory('ionLoading', function($ionicLoading) {
     };
     return loading;
 });
+
+appServices.factory('Auth', function ($window) {
+    return {
+        isLoggedIn: function () {
+            var _sik = $window.localStorage['sik'];
+            return _sik ? true : false;
+        },
+        logout: function () {
+            window.localStorage.removeItem("sik");
+            window.localStorage.removeItem("list_dependents");
+            _user = null;
+        }
+    }
+});

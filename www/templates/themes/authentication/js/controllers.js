@@ -1,6 +1,6 @@
 // Controller of catalog Page.
-appControllers.controller('authCtrl', function ($scope, $http, $state, $mdToast, $mdDialog, localStorage, ionLoading) {
-
+appControllers.controller('authCtrl', function ($scope, $http, $state, $mdToast, $mdDialog, localStorage, ionLoading, $base64, $ionicSideMenuDelegate) {
+    $ionicSideMenuDelegate.canDragContent(false);
     $scope.login = function (loginData) {
         ionLoading.show();
         var su = localStorage.get('su');
@@ -11,6 +11,10 @@ appControllers.controller('authCtrl', function ($scope, $http, $state, $mdToast,
                 if(status == 200){
                     if(response[0].action == 1)
                     {
+                        var loginValidator = response[0].vEmail+response[0].iMemberId+response[0].vFirstName;
+                        $scope.loginvalidatorEncoded = $base64.encode(loginValidator);
+
+                        localStorage.set('sik',$scope.loginvalidatorEncoded);
                         localStorage.set('memberid',response[0].iMemberId);
                         localStorage.set('email',response[0].vEmail);
                         localStorage.set('fname',response[0].vFirstName);

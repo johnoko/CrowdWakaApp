@@ -52,7 +52,7 @@ window.globalVariable = {
 };// End Global variable
 
 
-angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova', 'ion-google-place', 'ionic-rating-stars'])
+angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova', 'ion-google-place', 'ionic-rating-stars', 'base64'])
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet) {
 
         //Create database table of contracts by using sqlite database.
@@ -809,6 +809,11 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     'menuContent': {
                         templateUrl: "templates/themes/menu-dashboard/html/menu-dashboard.html",
                         controller: "menuDashboardCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
                     }
                 }
             })
