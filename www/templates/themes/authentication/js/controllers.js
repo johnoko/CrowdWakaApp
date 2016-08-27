@@ -8,7 +8,7 @@ appControllers.controller('authCtrl', function ($scope, $http, $state, $mdToast,
             .success(function(response,status,headers,config){
                 console.log(response[0].action);
                 console.log(status);
-                if(status == 200){
+                if(status == 200){ 
                     if(response[0].action == 1)
                     {
                         var loginValidator = response[0].vEmail+response[0].iMemberId+response[0].vFirstName;
