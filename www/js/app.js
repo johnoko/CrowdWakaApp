@@ -821,11 +821,11 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         controller: "menuDashboardCtrl"
                     }
                 },
-                onEnter: function ($state, Auth) {
-                    if(!Auth.isLoggedIn()){
-                        $state.go('app.Login');
-                    }
-                }
+                // onEnter: function ($state, Auth) {
+                //     if(!Auth.isLoggedIn()){
+                //         $state.go('app.Login');
+                //     }
+                // }
             })
             .state('app.expense', {
                 url: "/expense",
