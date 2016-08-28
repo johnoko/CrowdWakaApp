@@ -1,8 +1,12 @@
 // Controller of menu toggle.
 // Learn more about Sidenav directive of angular material
 // https://material.angularjs.org/latest/#/demo/material.components.sidenav
-appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, $ionicPlatform, $mdDialog, $mdBottomSheet, $mdMenu, $mdSelect) {
-    
+appControllers.controller('menuCtrl', function ($scope, $timeout, $mdToast, $mdUtil, $mdSidenav, $log, localStorage, $http, $ionicHistory, $state, $ionicPlatform, $mdDialog, $mdBottomSheet, $mdMenu, $mdSelect,$ionicPopup, $ionicSideMenuDelegate) {
+    $scope.pimage = localStorage.get('pimage');
+    $scope.fname = localStorage.get('fname');
+    $scope.email = localStorage.get('email');
+    $scope.lname = localStorage.get('lname');
+    //console.log("HERE 2: "+ $scope.pimage);                
     $scope.toggleLeft = buildToggler('left');
 
     // buildToggler is for create menu toggle.
@@ -139,5 +143,24 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
 
     },100);
     //End of $ionicPlatform.registerBackButtonAction
+     $scope.signout = function () {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Confirm Actions',
+            template: 'Are you sure you want to continue with Sign Out?'
+        });
+
+        confirmPopup.then(function(res) {
+            if(res) {
+                localStorage.removeAll();
+                localStorage.set('su','https://www.crowdwaka.com/crowdwaka-312198974560.php');
+                localStorage.set('first-launch','1');
+                $state.go('app.Login');
+                $mdSidenav('left').close();
+            } else {
+                return;
+            }
+        });
+
+    };
 
 }); // End of menu toggle controller.
