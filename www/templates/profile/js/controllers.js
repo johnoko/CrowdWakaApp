@@ -148,12 +148,12 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                     else
                     {
                         $scope.showAlert(response[0].message);
-                       /* $timeout(
+                        $timeout(
                             function () {
                                 $scope.onLoadMe();
                                 $state.go('app.profile');
                             },
-                            5000 ) */
+                        3000 );
                     }
                     ionLoading.hide();
                 });
@@ -187,6 +187,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                     no : {
                         lebel : response.chattiness[2].vNO_Lable,
                         i : response.chattiness[2].vNO,
+                        s : 'vNO',
                         faClass : 'fa fa-comments color-red'
                     }
                 };
@@ -246,25 +247,72 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                 };
             });
 
-        $http.get(localStorage.get('su')+'?type=personal_information&MemberId='+localStorage.get('memberid')+'&lang_pref=EN')
-            .success(function (response) {
-                var pinfo = response.personal_information;
-                $scope.smoking = {
-                    i : pinfo.Smoking,
-                    l : pinfo.Smoking_Lable
-                };
-                $scope.chattiness = {
-                    i : pinfo.Chattiness,
-                    l : pinfo.Chattiness_Lable
-                };
-                $scope.music = {
-                    i : pinfo.Music,
-                    l : pinfo.Music_Lable
-                };
-                $scope.pets = {
-                    i : pinfo.Pets,
-                    l : pinfo.Pets_Lable
-                };
-            });
+        $scope.updatePreferences = function (u) {
+            ionLoading.show();
+
+            var smoking,
+                chattiness,
+                music,
+                pets;
+
+            if(u.Chattiness == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751767_73190.jpg'){
+                chattiness = 'vYes';
+            }
+            else if(u.Chattiness == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751767_33350.jpg'){
+                chattiness = 'vMAYBE';
+            }
+            else{
+                chattiness = 'vNo';
+            }
+
+            if(u.Smoking == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751900_28533.jpg'){
+                smoking = 'vYes';
+            }
+            else if(u.Smoking == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751900_26481.jpg'){
+                smoking = 'vMAYBE';
+            }
+            else{
+                smoking = 'vNo';
+            }
+
+            if(u.Music == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751851_67648.jpg'){
+                music = 'vYes';
+            }
+            else if(u.Music == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751851_26759.jpg'){
+                music = 'vMAYBE';
+            }
+            else{
+                music = 'vNo';
+            }
+
+            if(u.Pets === 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751871_55523.jpg'){
+                pets = 'vYes';
+            }
+            else if(u.Pets === 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751871_72125.jpg'){
+                pets = 'vMAYBE';
+            }
+            else{
+                pets = 'vNo';
+            }
+
+            var savePrefered = localStorage.get('su')+"?type=save_preference&iMemberId="+localStorage.get('memberid')+'&pref_id_4='+chattiness+'&pref_id_5='+music+'&pref_id_1='+smoking+'&pref_id_3='+pets+'&pref_id_2='+smoking;
+            /*console.log(savePrefered);*/
+            $http.get(savePrefered)
+                .success(function (response) {
+                    if(response[0].action==1){
+                        ionLoading.hide();
+                        $scope.showAlert(response[0].message);
+                        $timeout(
+                            function () {
+                                $scope.onLoadMe();
+                                $state.go('app.profile');
+                            },
+                            5000 );
+                    }
+                    else{
+                        console.log(response[0].message);
+                    }
+                });
+        }
     }
 });

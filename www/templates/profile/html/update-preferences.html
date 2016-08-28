@@ -14,13 +14,13 @@
         <!--input section-->
         <h3 class="soft-header padding-top padding-bottom text-center">Update Ride Preference</h3>
         <p class="text-center">Please select your ride preferences below.</p>
-        <form ng-submit="updatePreferences(r)">
+        <form ng-submit="updatePreferences(editProfile.personal)">
             <br/>
             <br/>
 
             <md-input-container>
                 <h5 style="font-weight: bold; margin-bottom: -10px;" class="soft-header">Chattiness</h5>
-                <md-select ng-model="chattiness.i" aria-label="md-option">
+                <md-select ng-model="editProfile.personal.Chattiness" aria-label="md-option">
                     <md-option ng-repeat="c in chattinessLevels" ng-value="c.i"><i class="{{c.faClass}}"></i> {{c.lebel}}</md-option>
                 </md-select>
                 <div class="formexplain">What level of conversations do you think you are on?</div>
@@ -28,15 +28,15 @@
 
             <md-input-container>
                 <h5 style="font-weight: bold; margin-bottom: -10px;" class="soft-header">Music</h5>
-                <md-select ng-model="music.i" aria-label="md-option">
-                    <md-option ng-repeat="m in musicLevels" ng-value="m.i"><i class="{{m.faClass}}"></i> {{m.lebel}}</md-option>
+                <md-select ng-model="editProfile.personal.Music" aria-label="md-option">
+                    <md-option ng-repeat="m in musicLevels" data-id="{{m.s}}" ng-value="m.i"><i class="{{m.faClass}}"></i> {{m.lebel}}</md-option>
                 </md-select>
                 <div class="formexplain">How much music do you tolerate?</div>
             </md-input-container>
 
             <md-input-container>
                 <h5 style="font-weight: bold; margin-bottom: -10px;" class="soft-header">Smoking</h5>
-                <md-select ng-model="smoking.i" aria-label="md-option">
+                <md-select ng-model="editProfile.personal.Smoking" aria-label="md-option">
                     <md-option ng-repeat="s in smokeLevels" ng-value="s.i"><i class="{{s.faClass}}"></i> {{s.lebel}}</md-option>
                 </md-select>
                 <div class="formexplain">Smoking?</div>
@@ -44,18 +44,17 @@
 
             <md-input-container>
                 <h5 style="font-weight: bold; margin-bottom: -10px;" class="soft-header">Pets</h5>
-                <md-select ng-model="pets.i" aria-label="md-option">
+                <md-select ng-model="editProfile.personal.Pets" aria-label="md-option">
                     <md-option ng-repeat="p in petsLevels" ng-value="p.i"><i class="{{p.faClass}}"></i> {{p.lebel}}</md-option>
                 </md-select>
                 <div class="formexplain">How do you feel about pets on the journey?</div>
             </md-input-container>
 
 
-
             <!--end input section-->
             <div class="text-center">
                 <button type="submit" class="md-raised social-button md-button md-default-theme material-background">
-                    Change Password
+                    Save Preferences
                 </button>
             </div>
         </form>
