@@ -23,6 +23,7 @@ else{
     startPageUrl = "/app/menuDashboard";
     startPageState = "app.menuDashboard";
 }
+
 window.globalVariable = {
     //custom color style variable
     color: {
@@ -602,7 +603,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 cache: false,
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/sign-up.html"
+                        templateUrl: "templates/themes/authentication/html/sign-up.html",
+                        controller: 'authCtrl'
                     }
                 }
             })
@@ -821,11 +823,11 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         controller: "menuDashboardCtrl"
                     }
                 },
-                onEnter: function ($state, Auth) {
-                    if(!Auth.isLoggedIn()){
-                        $state.go('app.Login');
-                    }
-                }
+                // onEnter: function ($state, Auth) {
+                //     if(!Auth.isLoggedIn()){
+                //         $state.go('app.Login');
+                //     }
+                // }
             })
             .state('app.expense', {
                 url: "/expense",
@@ -990,6 +992,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     'menuContent': {
                         templateUrl: "templates/ride/html/find-ride.html",
                         controller: "rideCtrl"
+                    }
+                }
+            })
+            .state('app.verify', {
+                url: "/verify",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/verify-account.html",
+                        controller: "profileViewCtrl"
                     }
                 }
             });// End $stateProvider

@@ -3,7 +3,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
     $scope.$on('$ionicView.enter', function() {
         $scope.onLoadMe();
     });
-    
+
     $scope.pimage = localStorage.get('pimage');
     $scope.name = {
         'first': localStorage.get('fname'),
@@ -99,7 +99,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
 
     $scope.editUserProfile=function(u){
         ionLoading.show();
-        var profileData='?type=edit_profile&iMemberId='+u.iMemberId+'&vFirstName='+u.vFirstName+'&vLastName='+u.vLastName+'&eGender='+u.eGender+'&vNickName='+u.vNickName+'&vEmail='+u.vEmail+'&vPhone='+u.vPhone+'&vState='+u.vState+'&vCity='+u.vCity+'&vAddress='+u.vAddress+'&vZip='+u.vZip+'&iBirthYear='+u.iBirthYear+'&vLanguageCode=EN&tDescription='+u.tDescription+'&vBankAccountHolderName='+u.vBankAccountHolderName+'&vBankName='+u.vBankName+'&vAccountNumber='+u.vAccountNumber+'&vBankLocation='+u.vBankLocation+'&vBIC_SWIFT_Code='+u.vBIC_SWIFT_Code+'&vCountry='+u.vCountry+'&eMemberType='+u.eMemberType+'&mobileAlertchk=1&vPaymentEmail=';
+        var profileData='?type=edit_profile&iMemberId='+u.iMemberId+'&vFirstName='+u.vFirstName+'&vLastName='+u.vLastName+'&eGender='+u.eGender+'&vNickName='+u.vNickName+'&vEmail='+u.vEmail+'&vPhone='+u.vPhone+'&vState='+u.vStateCode+'&vCity='+u.vCity+'&vAddress='+u.vAddress+'&vZip='+u.vZip+'&iBirthYear='+u.iBirthYear+'&vLanguageCode=EN&tDescription='+u.tDescription+'&vBankAccountHolderName='+u.vBankAccountHolderName+'&vBankName='+u.vBankName+'&vAccountNumber='+u.vAccountNumber+'&vBankLocation='+u.vBankLocation+'&vBIC_SWIFT_Code='+u.vBIC_SWIFT_Code+'&vCountry='+u.vCountryCode+'&eMemberType='+u.eMemberType+'&mobileAlertchk=1&vPaymentEmail=';
         $http.get(localStorage.get('su')+profileData)
             .success(function (response){
                 console.log(response);
@@ -117,11 +117,11 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                 ionLoading.hide();
             });
     };
-    
+
     $scope.changePassword=function(u){
         ionLoading.show();
        // console.log("MemberID: "+localStorage.get('memberid'));
-       
+
        if(u.vNewPassword!=u.vNewPassword2)
        {
             $scope.showAlert("New password and Re-Enter Not Same");
@@ -129,7 +129,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
        }
        else
        {
-       
+
             var profileData='?type=change_password&iMemberId='+localStorage.get('memberid')+'&OldPassword='+u.vOldPassword+'&Password='+u.vNewPassword;
             $http.get(localStorage.get('su')+profileData)
                 .success(function (response){
@@ -159,7 +159,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                 });
        }
     };
-    
+
      $scope.showAlert = function ($content) {
         var alert = $mdDialog.alert({
             title: 'Message',
@@ -168,6 +168,5 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
         });
         $mdDialog
             .show( alert );
-    }   
-    
+    }
 });
