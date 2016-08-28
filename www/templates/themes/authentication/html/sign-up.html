@@ -16,25 +16,27 @@
         <div class="app-icon">
             <img src="img/app_icon.png" class="md-card-image">
         </div>
+        <div ng-show="errorMessage" style="background:red; color:white; padding:10px; width:auto" >{{errorMessage}}</div>
         <!--input section-->
+        <form class="signup-form" ng-submit="register(r)">
         <md-input-container md-no-float="">
             <div>
-                <input class="user-name" placeholder="First Name">
+                <input class="user-name" ng-model="r.vFirstName" placeholder="First Name">
             </div>
         </md-input-container>
         <md-input-container md-no-float="">
             <div>
-                <input class="user-name" placeholder="Last Name">
+                <input class="user-name" ng-model="r.vLastName" placeholder="Last Name">
             </div>
         </md-input-container>
         <md-input-container md-no-float="">
             <div>
-                <input class="user-name" placeholder="Email">
+                <input type="email" class="user-name" ng-model="r.vEmail" placeholder="Email">
             </div>
         </md-input-container>
         <md-input-container md-no-float="">
             <div>
-                <input type="password" class="user-name" placeholder="Password">
+                <input type="password" ng-model="r.vPassword" class="user-name" placeholder="Password">
             </div>
         </md-input-container>
         <md-input-container md-no-float="">
@@ -46,12 +48,11 @@
             I accept terms and conditions.
         </md-checkbox>
         <!--end input section-->
-        <a class="md-raised social-button md-button md-default-theme material-background">
-            Sign Up
-        </a>
+        <div class="text-center"><button class="md-raised social-button md-button md-default-theme material-background">Sign Up</button></div>
         <div class="dhp">
             Already have an account? <a href="#/app/login">Sign In</a>
         </div>
+      </form>
 
     </ion-content><!--end social sign up section-->
 </ion-view>
