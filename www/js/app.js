@@ -971,12 +971,25 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-            
             .state('app.changePassword', {
                 url: "/profile/changePassword",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/profile/html/changePassword.html",
+                        controller: "profileCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
+            .state('app.updatePreference', {
+                url: "/profile/updatePreference",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/update-preferences.html",
                         controller: "profileCtrl"
                     }
                 },

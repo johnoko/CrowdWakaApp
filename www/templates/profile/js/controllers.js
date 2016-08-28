@@ -2,6 +2,7 @@
 appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, localStorage, $http, ionLoading, $timeout, $state) {
     $scope.$on('$ionicView.enter', function() {
         $scope.onLoadMe();
+        //$scope.getPreferences();
     });
 
     $scope.pimage = localStorage.get('pimage');
@@ -13,7 +14,6 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
 
     $scope.onLoadMe=function () {
         ionLoading.show();
-        console.log(localStorage.get('su')+'?type=personal_information&MemberId='+localStorage.get('memberid')+'&lang_pref=EN');
         $http.get(localStorage.get('su')+'?type=personal_information&MemberId='+localStorage.get('memberid')+'&lang_pref=EN')
             .success(function(response){
                 $scope.getCountries();
@@ -168,5 +168,103 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
         });
         $mdDialog
             .show( alert );
+    };
+
+    $scope.getPreferences = function () {
+        $http.get(localStorage.get('su')+'?type=car_preferences_dropdown_datas&lang_pref=EN')
+            .success(function (response) {
+                $scope.chattinessLevels = {
+                    yes : {
+                        lebel : response.chattiness[0].vYes_Lable,
+                        i : response.chattiness[0].vYes,
+                        faClass : 'fa fa-comments color-green'
+                    },
+                    maybe : {
+                        lebel : response.chattiness[1].vMAYBE_Lable,
+                        i : response.chattiness[1].vMAYBE,
+                        faClass : 'fa fa-comments color-yellow'
+                    },
+                    no : {
+                        lebel : response.chattiness[2].vNO_Lable,
+                        i : response.chattiness[2].vNO,
+                        faClass : 'fa fa-comments color-red'
+                    }
+                };
+
+                $scope.musicLevels = {
+                    yes : {
+                        lebel : response.music[0].vYes_Lable,
+                        i : response.music[0].vYes,
+                        faClass : 'fa fa-music color-green'
+                    },
+                    maybe : {
+                        lebel : response.music[1].vMAYBE_Lable,
+                        i : response.music[1].vMAYBE,
+                        faClass : 'fa fa-music color-yellow'
+                    },
+                    no : {
+                        lebel : response.music[2].vNO_Lable,
+                        i : response.music[2].vNO,
+                        faClass : 'fa fa-music color-red'
+                    }
+                };
+
+                $scope.petsLevels = {
+                    yes : {
+                        lebel : response.pets[0].vYes_Lable,
+                        i : response.pets[0].vYes,
+                        faClass : 'fa fa-paw color-green'
+                    },
+                    maybe : {
+                        lebel : response.pets[1].vMAYBE_Lable,
+                        i : response.pets[1].vMAYBE,
+                        faClass : 'fa fa-paw color-yellow'
+                    },
+                    no : {
+                        lebel : response.pets[2].vNO_Lable,
+                        i : response.pets[2].vNO,
+                        faClass : 'fa fa-paw color-red'
+                    }
+                };
+
+                $scope.smokeLevels = {
+                    yes : {
+                        lebel : response.smoking[0].vYes_Lable,
+                        i : response.smoking[0].vYes,
+                        faClass : 'fa fa-fire color-green'
+                    },
+                    maybe : {
+                        lebel : response.smoking[1].vMAYBE_Lable,
+                        i : response.smoking[1].vMAYBE,
+                        faClass : 'fa fa-fire color-yellow'
+                    },
+                    no : {
+                        lebel : response.smoking[2].vNO_Lable,
+                        i : response.smoking[2].vNO,
+                        faClass : 'fa fa-fire color-red'
+                    }
+                };
+            });
+
+        $http.get(localStorage.get('su')+'?type=personal_information&MemberId='+localStorage.get('memberid')+'&lang_pref=EN')
+            .success(function (response) {
+                var pinfo = response.personal_information;
+                $scope.smoking = {
+                    i : pinfo.Smoking,
+                    l : pinfo.Smoking_Lable
+                };
+                $scope.chattiness = {
+                    i : pinfo.Chattiness,
+                    l : pinfo.Chattiness_Lable
+                };
+                $scope.music = {
+                    i : pinfo.Music,
+                    l : pinfo.Music_Lable
+                };
+                $scope.pets = {
+                    i : pinfo.Pets,
+                    l : pinfo.Pets_Lable
+                };
+            });
     }
 });
