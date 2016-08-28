@@ -2,6 +2,7 @@
 appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, localStorage, $http, ionLoading, $timeout, $state) {
     $scope.$on('$ionicView.enter', function() {
         $scope.onLoadMe();
+        //$scope.getPreferences();
     });
 
     $scope.pimage = localStorage.get('pimage');
@@ -13,7 +14,6 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
 
     $scope.onLoadMe=function () {
         ionLoading.show();
-        console.log(localStorage.get('su')+'?type=personal_information&MemberId='+localStorage.get('memberid')+'&lang_pref=EN');
         $http.get(localStorage.get('su')+'?type=personal_information&MemberId='+localStorage.get('memberid')+'&lang_pref=EN')
             .success(function(response){
                 $scope.getCountries();
@@ -148,12 +148,12 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                     else
                     {
                         $scope.showAlert(response[0].message);
-                       /* $timeout(
+                        $timeout(
                             function () {
                                 $scope.onLoadMe();
                                 $state.go('app.profile');
                             },
-                            5000 ) */
+                        3000 );
                     }
                     ionLoading.hide();
                 });
@@ -168,5 +168,151 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
         });
         $mdDialog
             .show( alert );
+    };
+
+    $scope.getPreferences = function () {
+        $http.get(localStorage.get('su')+'?type=car_preferences_dropdown_datas&lang_pref=EN')
+            .success(function (response) {
+                $scope.chattinessLevels = {
+                    yes : {
+                        lebel : response.chattiness[0].vYes_Lable,
+                        i : response.chattiness[0].vYes,
+                        faClass : 'fa fa-comments color-green'
+                    },
+                    maybe : {
+                        lebel : response.chattiness[1].vMAYBE_Lable,
+                        i : response.chattiness[1].vMAYBE,
+                        faClass : 'fa fa-comments color-yellow'
+                    },
+                    no : {
+                        lebel : response.chattiness[2].vNO_Lable,
+                        i : response.chattiness[2].vNO,
+                        s : 'vNO',
+                        faClass : 'fa fa-comments color-red'
+                    }
+                };
+
+                $scope.musicLevels = {
+                    yes : {
+                        lebel : response.music[0].vYes_Lable,
+                        i : response.music[0].vYes,
+                        faClass : 'fa fa-music color-green'
+                    },
+                    maybe : {
+                        lebel : response.music[1].vMAYBE_Lable,
+                        i : response.music[1].vMAYBE,
+                        faClass : 'fa fa-music color-yellow'
+                    },
+                    no : {
+                        lebel : response.music[2].vNO_Lable,
+                        i : response.music[2].vNO,
+                        faClass : 'fa fa-music color-red'
+                    }
+                };
+
+                $scope.petsLevels = {
+                    yes : {
+                        lebel : response.pets[0].vYes_Lable,
+                        i : response.pets[0].vYes,
+                        faClass : 'fa fa-paw color-green'
+                    },
+                    maybe : {
+                        lebel : response.pets[1].vMAYBE_Lable,
+                        i : response.pets[1].vMAYBE,
+                        faClass : 'fa fa-paw color-yellow'
+                    },
+                    no : {
+                        lebel : response.pets[2].vNO_Lable,
+                        i : response.pets[2].vNO,
+                        faClass : 'fa fa-paw color-red'
+                    }
+                };
+
+                $scope.smokeLevels = {
+                    yes : {
+                        lebel : response.smoking[0].vYes_Lable,
+                        i : response.smoking[0].vYes,
+                        faClass : 'fa fa-fire color-green'
+                    },
+                    maybe : {
+                        lebel : response.smoking[1].vMAYBE_Lable,
+                        i : response.smoking[1].vMAYBE,
+                        faClass : 'fa fa-fire color-yellow'
+                    },
+                    no : {
+                        lebel : response.smoking[2].vNO_Lable,
+                        i : response.smoking[2].vNO,
+                        faClass : 'fa fa-fire color-red'
+                    }
+                };
+            });
+
+        $scope.updatePreferences = function (u) {
+            ionLoading.show();
+
+            var smoking,
+                chattiness,
+                music,
+                pets;
+
+            if(u.Chattiness == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751767_73190.jpg'){
+                chattiness = 'vYes';
+            }
+            else if(u.Chattiness == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751767_33350.jpg'){
+                chattiness = 'vMAYBE';
+            }
+            else{
+                chattiness = 'vNo';
+            }
+
+            if(u.Smoking == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751900_28533.jpg'){
+                smoking = 'vYes';
+            }
+            else if(u.Smoking == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751900_26481.jpg'){
+                smoking = 'vMAYBE';
+            }
+            else{
+                smoking = 'vNo';
+            }
+
+            if(u.Music == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751851_67648.jpg'){
+                music = 'vYes';
+            }
+            else if(u.Music == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751851_26759.jpg'){
+                music = 'vMAYBE';
+            }
+            else{
+                music = 'vNo';
+            }
+
+            if(u.Pets === 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751871_55523.jpg'){
+                pets = 'vYes';
+            }
+            else if(u.Pets === 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751871_72125.jpg'){
+                pets = 'vMAYBE';
+            }
+            else{
+                pets = 'vNo';
+            }
+
+            var savePrefered = localStorage.get('su')+"?type=save_preference&iMemberId="+localStorage.get('memberid')+'&pref_id_4='+chattiness+'&pref_id_5='+music+'&pref_id_1='+smoking+'&pref_id_3='+pets+'&pref_id_2='+smoking;
+            /*console.log(savePrefered);*/
+            $http.get(savePrefered)
+                .success(function (response) {
+                    if(response[0].action==1){
+                        ionLoading.hide();
+                        $scope.showAlert(response[0].message);
+                        $timeout(
+                            function () {
+                                $scope.onLoadMe();
+                                $state.go('app.profile');
+                            },
+                            5000 );
+                    }
+                    else{
+                        console.log(response[0].message);
+                    }
+                });
+        }
     }
 });
