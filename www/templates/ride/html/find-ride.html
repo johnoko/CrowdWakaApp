@@ -12,27 +12,37 @@
             <img src="img/find-ride.png" class="md-card-image">
         </div>
         <h3 class="soft-header padding-top padding-bottom text-center">Enter your location and destination to search for a ride.</h3>
-        <p ng-show="errorMessage" class="text-center" style="color: red;">{{errorMessage}}</p>
+        <p ng-show="errormessage" class="text-center" style="color: red;">{{errormessage}}</p>
 
         <!--input section-->
-        <form class="search-form" ng-submit="search(findride)">
+
             <md-list>
-                <md-list-item>
-                    <md-input-container md-no-float="" class="md-list-item-full-width">
-                        <ion-google-place placeholder="Your departure location" info="start" id="startLocation" ng-model="findride.from" />
-                    </md-input-container>
-                </md-list-item>
-                <md-list-item>
-                    <md-input-container md-no-float="" class="md-list-item-full-width">
-                        <ion-google-place placeholder="Your destination" info="end" id="endLocation" ng-model="findride.to" />
-                    </md-input-container>
+                <form class="search-form" ng-submit="search(s)">
+                    <md-list-item>
+                        <md-input-container md-no-float="" class="md-list-item-full-width">
+                            <ion-google-place placeholder="Your departure location" info="start" id="startLocation" ng-model="s.from" />
+                        </md-input-container>
+                    </md-list-item>
+                    <md-list-item>
+                        <md-input-container md-no-float="" class="md-list-item-full-width">
+                            <ion-google-place placeholder="Your destination" info="end" id="endLocation" ng-model="s.to" />
+                        </md-input-container>
+                    </md-list-item>
+                    <input type="hidden" ng-model="s.dateselected">
+                </form>
+                <md-list-item class="text-center">
+                    <onezone-datepicker datepicker-object="onezoneDatepicker" style="width:100%;">
+                        <button class="button button-block button-outline button-positive show-onezone-datepicker">
+                            {{onezoneDatepicker.date | date:'dd MMMM yyyy'}}
+                        </button>
+                    </onezone-datepicker>
                 </md-list-item>
 
                 <div class="text-center">
-                    <button class="md-raised social-button md-button md-default-theme material-background">Search</button>
+                    <button ng-click="search(s)" class="md-raised social-button md-button md-default-theme material-background">Search</button>
                 </div>
             </md-list>
-        </form>
+
 
         <div ng-show="nothingfound">No ride found with the criteria.</div>
         <md-list flex ng-show="found">
