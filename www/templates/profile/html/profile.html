@@ -59,7 +59,7 @@
 
         <!--Below code it will disable animation to better performance-->
         <div ng-if="!isAnimated" class="list-expense-menu">
-            <div class="list-expense-menu-item" ng-show="phone">
+            <div class="list-expense-menu-item" style="margin-top: 60px;"ng-show="phone">
                 <div class="row">
                     <div class="col-80 menu">
                         <p class="header">Phone</p>
@@ -99,8 +99,7 @@
         <div class="text-center m-t-10">
             <a class="social-button md-button md-default-theme md-warn" ng-show="isPhoneVerified === 'No'" ng-click="showPhonePrompt(phone,'Verify Your Phone Number','Please enter the code you got as an SMS on '+phone+'.')">Verify Phone Number</a>
             <a class="social-button md-button md-default-theme md-warn" ng-show="isEmailVerified === 'No'" ng-click="showEmailPrompt(email,'Verify Your Email Address','Please enter the code you got via this email: '+email+'.')">Verify Email</a>
-            <a class="social-button md-button md-default-theme material-background" ng-click="goto('app.editProfile')">Edit Profile</a>
-            <a class="social-button md-button md-default-theme material-background" ng-click="goto('app.updatePreference')">Ride Preference</a>
+            <a class="social-button md-button md-default-theme material-background" ng-click="goto('app.editProfile')">Edit Profile</a> 
             <a class="social-button md-button md-default-theme material-background" ng-click="goto('app.changePassword')">Change Password</a>
         </div>
 
