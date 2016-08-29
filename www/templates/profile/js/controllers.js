@@ -262,7 +262,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                 chattiness = 'vMAYBE';
             }
             else{
-                chattiness = 'vNo';
+                chattiness = 'vNO';
             }
 
             if(u.Smoking == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751900_28533.jpg'){
@@ -272,7 +272,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                 smoking = 'vMAYBE';
             }
             else{
-                smoking = 'vNo';
+                smoking = 'vNO';
             }
 
             if(u.Music == 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751851_67648.jpg'){
@@ -282,7 +282,7 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                 music = 'vMAYBE';
             }
             else{
-                music = 'vNo';
+                music = 'vNO';
             }
 
             if(u.Pets === 'https://www.crowdwaka.com//public_html/uploads/preferences/1453751871_55523.jpg'){
@@ -292,11 +292,11 @@ appControllers.controller('profileCtrl', function ($scope, $mdToast, $mdDialog, 
                 pets = 'vMAYBE';
             }
             else{
-                pets = 'vNo';
+                pets = 'vNO';
             }
 
             var savePrefered = localStorage.get('su')+"?type=save_preference&iMemberId="+localStorage.get('memberid')+'&pref_id_4='+chattiness+'&pref_id_5='+music+'&pref_id_1='+smoking+'&pref_id_3='+pets+'&pref_id_2='+smoking;
-            /*console.log(savePrefered);*/
+            //console.log(savePrefered);
             $http.get(savePrefered)
                 .success(function (response) {
                     if(response[0].action==1){
