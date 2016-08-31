@@ -239,6 +239,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             return customStyle;
         }// End createCustomStyle
 
+        $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
+            console.log('stateChangeSuccess');
+            if (toState.changeColor) {
+                $rootScope.secColor = toState.changeColor;
+            } else {
+                $rootScope.secColor = false;
+            }
+        });
+
         // Add custom style while initial application.
         $rootScope.customStyle = createCustomStyle(window.globalVariable.startPage.state);
 
@@ -1007,6 +1016,16 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         controller: "rideCtrl"
                     }
                 }
+            })
+            .state('app.viewRide', {
+                url: "/ride",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/ride/html/view-ride.html",
+                        controller: "rideCtrl"
+                    }
+                },
+                changeColor: 'viewride'
             })
             .state('app.verify', {
                 url: "/verify",

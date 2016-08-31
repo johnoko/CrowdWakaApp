@@ -11,51 +11,76 @@
         <div class="app-icon">
             <img src="img/find-ride.png" class="md-card-image">
         </div>
-        <h3 class="soft-header padding-top padding-bottom text-center">Enter your location and destination to search for a ride.</h3>
+        <h3 class="soft-header padding-top padding-bottom text-center">Enter your location and destination to search for
+            a ride.</h3>
         <p ng-show="errormessage" class="text-center" style="color: red;">{{errormessage}}</p>
 
         <!--input section-->
 
-            <md-list>
-                <form class="search-form" ng-submit="search(s)">
-                    <md-list-item>
-                        <md-input-container md-no-float="" class="md-list-item-full-width">
-                            <ion-google-place placeholder="Your departure location" info="start" id="startLocation" ng-model="s.from" />
-                        </md-input-container>
-                    </md-list-item>
-                    <md-list-item>
-                        <md-input-container md-no-float="" class="md-list-item-full-width">
-                            <ion-google-place placeholder="Your destination" info="end" id="endLocation" ng-model="s.to" />
-                        </md-input-container>
-                    </md-list-item>
-                    <input type="hidden" ng-model="s.dateselected">
-                </form>
-                <md-list-item class="text-center">
-                    <onezone-datepicker datepicker-object="onezoneDatepicker" style="width:100%;">
-                        <button class="button button-block button-outline button-positive show-onezone-datepicker">
-                            {{onezoneDatepicker.date | date:'dd MMMM yyyy'}}
-                        </button>
-                    </onezone-datepicker>
+        <md-list ng-class="{'animate-hide':searchCSS}">
+            <form class="search-form" ng-submit="search(s)">
+                <md-list-item>
+                    <md-input-container md-no-float="" class="md-list-item-full-width">
+                        <ion-google-place placeholder="Your departure location" info="start" id="startLocation"
+                                          ng-model="s.from"/>
+                    </md-input-container>
                 </md-list-item>
+                <md-list-item>
+                    <md-input-container md-no-float="" class="md-list-item-full-width">
+                        <ion-google-place placeholder="Your destination" info="end" id="endLocation" ng-model="s.to"/>
+                    </md-input-container>
+                </md-list-item>
+                <input type="hidden" ng-model="s.dateselected">
+            </form>
+            <md-list-item class="text-center">
+                <onezone-datepicker datepicker-object="onezoneDatepicker" style="width:100%;">
+                    <button class="button button-block button-outline button-positive show-onezone-datepicker">
+                        {{onezoneDatepicker.date | date:'dd MMMM yyyy'}}
+                    </button>
+                </onezone-datepicker>
+            </md-list-item>
 
-                <div class="text-center">
-                    <button ng-click="search(s)" class="md-raised social-button md-button md-default-theme material-background">Search</button>
-                </div>
-            </md-list>
+            <div class="text-center">
+                <button ng-click="search(s)"
+                        class="md-raised social-button md-button md-default-theme material-background">Search
+                </button>
+            </div>
+        </md-list>
+
+        <div class="text-center">
+            <br/>
+            <a ng-show="hidebutton" ng-click="showForm()" class="button button-small button-balanced">Search again</a>
+            <br/>
+        </div>
 
 
         <div ng-show="nothingfound">No ride found with the criteria.</div>
-        <md-list flex ng-show="found">
-            <md-subheader class="md-no-sticky">3 Rides found</md-subheader>
-            <md-list-item class="md-3-line">
-                <img ng-src="" src="img/find-ride.png" class="md-avatar" alt="" />
-                <div class="md-list-item-text" layout="column">
-                    <h3>Ride 1</h3>
-                    <h4>mini descr</h4>
-                    <p>Lorem Ipsum dolor sit amit senur</p>
-                </div>
-            </md-list-item>
-        </md-list>
+
+        <div ng-show="found" style="padding:10px;margin-top:40px;background:#4caf50;color:#fff;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;">{{countfound}}
+            ride(s) found.
+        </div>
+        <div ng-show="found">
+
+            <div class="list" ng-repeat="ride in foundrides">
+                <a class="item item-thumbnail-left item-text-wrap" href="#"
+                   ng-click="viewride(ride.iRideId,ride.iRideDateId,ride.start_iRidePointId,ride.end_iRidePointId,ride.return)">
+                    <img src="{{ride.image}}">
+                    <h3 style="line-height: 21px;"><i class="ion ion-map soft"></i> <span ng-bind-html="ride.places_str"
+                                                                                          class="soft"></span></h3>
+                    <h4 class="soft"><i class="ion ion-card soft"></i> {{ride.price}}</h4>
+                    <span style="padding: 3px 0;">
+                        <rating-stars ng-model="ride.rating" max="ratingmax"></rating-stars>
+                    </span>
+                </a>
+            </div>
+
+            <ion-infinite-scroll
+                    ng-if="!noMoreItemsAvailable"
+                    icon="ion-loading-c"
+                    distance="5%"
+                    on-infinite="loadMoreData()">
+            </ion-infinite-scroll>
+        </div>
 
         <!--end input section-->
 

@@ -7,7 +7,7 @@
 
 <ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
-        <ion-nav-bar class="bar-balanced  material-background-nav-bar">
+        <ion-nav-bar class="bar-balanced  material-background-nav-bar" ng-class="{'bar-custom': secColor == 'viewride'}">
             <ion-nav-buttons side="left">
                 <a class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="toggleLeft()"></a>
             </ion-nav-buttons>
@@ -41,7 +41,7 @@
                         <span>Dashboard</span>
                     </div>
                 </div>                
-                <md-subheader class="md-warn">Account</md-subheader>
+                <md-subheader class="">Account</md-subheader>
                 <div class="row menu-item"  ng-click="navigateTo('app.profile')">
                     <div class="col-33">
                         <i class="fa fa-database"></i>
@@ -90,7 +90,7 @@
                         <span>Sign Out</span>
                     </div>
                 </div> 
-                <md-subheader class="md-warn">Extras</md-subheader>
+                <md-subheader class="">Extras</md-subheader>
                 <div class="row menu-item"  ng-click="navigateTo('app.restaurant')">
                     <div class="col-33">
                         <i class="fa fa-question-circle"></i>

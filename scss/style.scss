@@ -2163,8 +2163,44 @@ md-sidenav {
 #expense-dashboard {
   //expense toolbar section
   .toolbar-expense {
-    max-height: 260px !important;
+    max-height: 280px !important;
     height: 260px !important;
+    box-shadow: 0 2px 6px $color_black_20;
+
+    div {
+      padding: 26px 10px 10px 10px;
+      text-align: center;
+      height: inherit !important;
+    }
+
+    h1 {
+      color: $color_white;
+      font-size: 30px;
+      font-weight: 400;
+    }
+
+    h2 {
+      color: $color_white;
+      font-size: 16px;
+    }
+
+    h3 {
+      color: $color_white;
+      font-size: 28px !important;
+    }
+    img.user-img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-top: 0;
+
+    }
+  }//end toolbar section
+
+  .toolbar-ride {
+    background: #b30c0c;
+    max-height: 280px !important;
+    height: 280px !important;
     box-shadow: 0 2px 6px $color_black_20;
 
     div {
@@ -2286,6 +2322,9 @@ md-sidenav {
         }
       }
     }//end panel section
+    .viewride-list{
+      margin-top:-20px;
+    }
   }//end expense content section
   .srating{
     margin-top: 5px;
@@ -2934,6 +2973,10 @@ md-sidenav {
   font-weight: bold !important;
 }
 
+.soft{
+  color: #808080 !important;
+}
+
 .bar-header.item-input-inset{
   background: #ff0000;
   color: #fff;
@@ -3018,4 +3061,25 @@ hr {
   font-style: italic !important;
   border: none !important;
   font-size: 10px !important;
+}
+
+#find-ride md-list-item .md-list-item-text h3{
+  line-height:21px;
+  font-size: 14px;
+}
+
+.animate-hide{
+  height: 10px;
+  -webkit-transition: height 2s;
+  -moz-transition: height 2s;
+  -ms-transition: height 2s;
+  -o-transition: height 2s;
+  transition: height 2s;
+  overflow: hidden;
+}
+
+bar.bar-custom, bar.bar-custom .bar.bar-positive, .bar-custom .nav-bar-block ion-header-bar {
+  border-color: #b30c0c !important;
+  background-color: #b30c0c !important;
+  background-image: linear-gradient(0deg, #b30c0c, #b30c0c 50%, transparent 50%) !important;
 }
