@@ -1,0 +1,107 @@
+<ion-view title="Profile" id="expense-dashboard">
+    <ion-content scroll="true" id="expense-dashboard-content">
+
+    <!--expense toolbar section-->
+    <md-toolbar class="bar-subheader md-tall md-primary toolbar-expense">
+        <div>
+            <img ng-src="{{pimage}}" class="user-img"/>
+
+            <h1>{{name.full}}</h1>
+            <div class="text-center srating">
+                <rating-stars ng-model="rating" max="ratingmax"></rating-stars>
+                <br/>
+                <i class="fa fa-comments color-green" ng-show="ridePreferences.chattiness.title =='I love to chat'"></i>
+                <i class="fa fa-comments color-yellow" ng-show="ridePreferences.chattiness.title =='I talk depending on my mood'"></i>
+                <i class="fa fa-comments color-red" ng-show="ridePreferences.chattiness.title =='I\'m the quiet type :)'"></i>
+
+                <i class="fa fa-fire color-green" ng-show="ridePreferences.smoking.title =='Cigarette smoke doesn\'t bother me'"></i>
+                <i class="fa fa-fire color-yellow" ng-show="ridePreferences.smoking.title =='Depending on my mood'"></i>
+                <i class="fa fa-fire color-red" ng-show="ridePreferences.smoking.title =='No Smoking Please'"></i>
+
+                <i class="fa fa-music color-green" ng-show="ridePreferences.music.title =='It\'s all about the Playlist!'"></i>
+                <i class="fa fa-music color-yellow" ng-show="ridePreferences.music.title =='Depending on my mood'"></i>
+                <i class="fa fa-music color-red" ng-show="ridePreferences.music.title =='Silence is golden'"></i>
+
+                <i class="fa fa-paw color-green" ng-show="ridePreferences.pets.title =='Pets are welcomed'"></i>
+                <i class="fa fa-paw color-yellow" ng-show="ridePreferences.pets.title =='Depending on my mood'"></i>
+                <i class="fa fa-paw color-red" ng-show="ridePreferences.pets.title =='No pets in my Vehicle please'"></i>
+            </div>
+        </div>
+
+    </md-toolbar><!--end expense toolbar section-->
+
+    <!--expense content section-->
+
+
+        <div class="news-item pdecs" ng-show="desc">
+            <!--detail section-->
+            <div class="row detail">
+                <div class="col">
+                    <h4>About Me</h4>
+                    <p class="content">
+                        {{desc}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-item pdecs" ng-show="!isAllVerified" style="margin-top: -20px;">
+            <!--detail section-->
+            <div class="row detail">
+                <div class="col">
+                    <h4 class="text-center">Please Verify Your <span ng-show="isEmailVerified === 'No'">Email address</span><span ng-show="isPhoneVerified === 'No'"> and Phone Number</span.</h4>
+                    <p class="content text-center">
+                        Tap on the buttons below to verify your phone number or email.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Below code it will disable animation to better performance-->
+        <div ng-if="!isAnimated" class="list-expense-menu">
+            <div class="list-expense-menu-item" style="margin-top: 60px;"ng-show="phone">
+                <div class="row">
+                    <div class="col-80 menu">
+                        <p class="header">Phone</p>
+                        <p class="detail">{{phone}} -
+                            <i ng-show="isPhoneVerified === 'Yes'" class="fa fa-certificate color-green"></i><span class="color-green" ng-show="isPhoneVerified === 'Yes'"> Verified</span>
+                            <i ng-show="isPhoneVerified === 'No'" class="fa fa-certificate color-red"></i><span class="color-red" ng-show="isPhoneVerified === 'No'"> Not Verified. Click to verify</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="list-expense-menu-item nophone" style="margin-top: 60px;" ng-hide="phone">
+                <div class="row">
+                    <div class="col-80 menu">
+                        <p class="header">Phone</p>
+                        <p class="detail color-red">
+                            You have not entered a phone number. Pleae edit your profile to add a phone number.
+                            <i ng-show="isPhoneVerified === 'No'" class="fa fa-caution color-red"></i><span class="color-red" ng-show="isPhoneVerified === 'No'"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="list-expense-menu-item" ng-class="{noemail:isEmailVerified=='No'}">
+                <div class="row">
+                    <div class="col-80 menu">
+                        <p class="header">Email</p>
+                        <p class="detail">{{email}} -
+                            <i ng-show="isEmailVerified === 'Yes'" class="fa fa-certificate color-green"></i><span class="color-green" ng-show="isEmailVerified === 'Yes'"> Verified</span>
+                            <i ng-show="isEmailVerified === 'No'" class="fa fa-certificate color-red"></i><span class="color-red" ng-show="isEmailVerified === 'No'"> Email Not Verified. Tap the button below to enter verification.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center m-t-10">
+            <a class="social-button md-button md-default-theme md-warn" ng-show="isPhoneVerified === 'No'" ng-click="showPhonePrompt(phone,'Verify Your Phone Number','Please enter the code you got as an SMS on '+phone+'.')">Verify Phone Number</a>
+            <a class="social-button md-button md-default-theme md-warn" ng-show="isEmailVerified === 'No'" ng-click="showEmailPrompt(email,'Verify Your Email Address','Please enter the code you got via this email: '+email+'.')">Verify Email</a>
+            <a class="social-button md-button md-default-theme material-background" ng-click="goto('app.editProfile')">Edit Profile</a> 
+            <a class="social-button md-button md-default-theme material-background" ng-click="goto('app.changePassword')">Change Password</a>
+        </div>
+
+    </ion-content><!--end expense content section-->
+</ion-view>

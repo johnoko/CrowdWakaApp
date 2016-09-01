@@ -1,0 +1,85 @@
+<ion-view title="Rides Offered" id="rides-offered-page">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <ion-content scroll="true" id="rides-offered-content" ng-init="getRidesOffered()">
+
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Availabe">
+                <md-content class="md-padding">
+                    <div id="rides-list-view" ng-show="availableRidesFound">
+                        <div class="ride" ng-repeat="a in availableRides">
+                            <div class="ride-title">
+                                <!--<img src="" alt="">-->
+                                <h3 class="soft">{{a.vMainDeparture}} <i class="ion ion-arrow-right-c"></i> {{a.vMainArrival}}</h3>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="ride-details-short">
+                                <div class="ride-att soft">
+                                    <i class="ion ion-clock soft"></i> Drive time: {{a.vMainTimeDuration}} <br/>
+                                    <i class="ion ion-bag soft"></i> Luggage Size: {{a.eLuggageSize}} <br/>
+                                </div>
+                                <div class="ride-dates">
+                                    <div class="date">
+                                        <div style="padding: 0 5px; color: #4caf50; font-weight: bold;">{{a.dDepartureDate}}</div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="ride-footer">
+                                <div class="dets">
+                                    <a ng-click="deleteTrip(a.iRideId)" style="color:red;"><i class="ion ion-trash-a"></i> Delete Trip </a>
+                                </div>
+                                <div class="ride-price"><h4>{{a.totprice}}</h4></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center" ng-hide="availableRidesFound">
+                        You have not offered any ride recently.
+                        <a ng-click="" class="md-raised social-button md-button md-default-theme material-background">
+                            Offer a Ride Now
+                        </a>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="Past Rides">
+                <md-content class="md-padding">
+                    <div id="rides-list-view-tab-2" ng-show="pastRidesFound">
+                        <div class="ride" ng-repeat="p in pastRides">
+                            <div class="ride-title">
+                                <!--<img src="" alt="">-->
+                                <h3 class="soft">{{p.vMainDeparture}} <i class="ion ion-arrow-right-c"></i> {{p.vMainArrival}}</h3>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="ride-details-short">
+                                <div class="ride-att soft">
+                                    <i class="ion ion-clock soft"></i> Drive time: {{p.vMainTimeDuration}} <br/>
+                                    <i class="ion ion-bag soft"></i> Luggage Size: {{p.eLuggageSize}} <br/>
+                                </div>
+                                <div class="ride-dates">
+                                    <div class="date">
+                                        <div style="padding: 0 5px; color: #4caf50; font-weight: bold;">{{p.dDepartureDate}}</div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="ride-footer">
+                                <div class="dets"></div>
+                                <div class="ride-price"><h4>{{p.totprice}}</h4></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center" ng-hide="pastRidesFound">
+                        You have no past rides.
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </ion-content><!--end expense content section-->
+</ion-view>

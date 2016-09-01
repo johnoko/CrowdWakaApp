@@ -3083,3 +3083,100 @@ bar.bar-custom, bar.bar-custom .bar.bar-positive, .bar-custom .nav-bar-block ion
   background-color: #b30c0c !important;
   background-image: linear-gradient(0deg, #b30c0c, #b30c0c 50%, transparent 50%) !important;
 }
+
+/*#rides-offered-content{
+  padding: 0;
+}*/
+
+#rides-list-view, #rides-list-view-tab-2, #find-ride{
+  .ride{
+    margin-top: 10px;
+    border:1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+  .ride .ride-title{
+    padding: 4px 6px;
+    border-bottom:1px solid #ccc;
+  }
+  .ride .ride-title img{
+    width: 50px;
+    height: 50px;
+    margin-right:10px;
+    float: left;
+  }
+  .ride .ride-title h3{
+    margin: 4px 0 0 0 !important;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 21px;
+  }
+  .ride .ride-details-short{
+    padding: 4px 6px;
+  }
+  .ride .ride-details-short .ride-att{
+    float: left;
+    width: 60%;
+  }
+  .ride .ride-details-short .ride-dates{
+    float: right;
+    width: 30%;
+    border-left: 1px solid #cccccc;
+    margin-left: 10px;
+    height: 45px;
+  }
+  .ride .ride-details-short .ride-dates .day{
+    float: left;
+    width: 30%;
+    font-size: 20px;
+    margin-left: 15px;
+    color: #4caf50;
+  }
+  .ride .ride-details-short .ride-dates .monthandyear{
+    float: right;
+    width: 50%;
+    /*text-align: right;*/
+    color: #4caf50;
+  }
+  .ride .ride-footer{
+    border-top: 1px solid #ccc;
+  }
+  .ride .ride-footer div.dets{
+    float: left;
+    width: 69% !important;
+    padding: 4px 6px;
+  }
+  .ride .ride-footer div.ride-price{
+    float: left;
+    width: 31% !important;
+    padding: 5px 6px;
+    text-align: right;
+    background: #00a859;
+  }
+  .ride .ride-footer div.ride-price h4{
+    color: #ffffff !important;
+    padding: 2px 0;
+  }
+  .ride .ride-footer div h4{
+    font-size: 13px !important;
+    font-weight: bold;
+    margin:0 !important;
+  }
+  md-content{
+    padding: 20px !important;
+  }
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+  color: #4caf50 !important;
+  background-color: #4caf50 !important;
+}
+
+md-tabs-canvas{
+  background: #4caf50 !important;
+}
+
+md-tabs .md-tab.md-active, md-tabs .md-tab.md-focused{
+  color: #ffffff;
+}
