@@ -1901,6 +1901,14 @@ md-sidenav {
     text-align: center; }
   #find-ride img {
     width: 92px; }
+  #find-ride .button.button-positive.button-outline {
+    background: transparent;
+    color: #4caf50;
+    border: 1px dashed #4caf50;
+    width: auto;
+    padding: 0 10px;
+    min-height: 0;
+    margin: 0 auto 20px auto; }
 
 .soft-header {
   color: #808080 !important;
