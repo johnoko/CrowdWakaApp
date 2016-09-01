@@ -994,6 +994,20 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+            .state('app.mycars', {
+                url: "/profile/mycars",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/my-cars.html",
+                        controller: "carCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
             .state('app.changePassword', {
                 url: "/profile/changePassword",
                 views: {
