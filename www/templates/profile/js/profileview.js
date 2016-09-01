@@ -32,7 +32,7 @@ appControllers.controller('profileViewCtrl', function ($scope, $mdToast, $mdDial
                 $scope.isEmailVerified = response.personal_information.eEmailVarified;
                 $scope.isAllVerified = function (e, p) {
                     return !(e === 'Yes' || p === 'Yes');
-                }
+                };
                 $scope.ridePreferences = {
                     'smoking': {
                         'icon': response.personal_information.Smoking,

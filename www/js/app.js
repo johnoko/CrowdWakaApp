@@ -980,6 +980,20 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+            .state('app.ratings', {
+                url: "/profile/rating",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/my-ratings.html",
+                        controller: "ratingsCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
             .state('app.changePassword', {
                 url: "/profile/changePassword",
                 views: {

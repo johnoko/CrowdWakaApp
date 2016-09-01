@@ -3090,9 +3090,25 @@ bar.bar-custom, bar.bar-custom .bar.bar-positive, .bar-custom .nav-bar-block ion
   background-image: linear-gradient(0deg, #b30c0c, #b30c0c 50%, transparent 50%) !important;
 }
 
-/*#rides-offered-content{
-  padding: 0;
-}*/
+#ratings-view{
+  .total-rating{
+    padding: 40px 10px 10px 10px;
+    text-align: center;
+    background: #4caf50;
+  }
+  .total-rating h3{
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 200;
+  }
+  .total-rating rating-stars{
+    color: #fff;
+  }
+  .total-rating rating-stars i{
+    font-size: 21px !important;
+  }
+}
 
 #rides-list-view, #rides-list-view-tab-2, #find-ride{
   .ride{
@@ -3175,8 +3191,8 @@ bar.bar-custom, bar.bar-custom .bar.bar-positive, .bar-custom .nav-bar-block ion
 }
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
-  color: #4caf50 !important;
-  background-color: #4caf50 !important;
+  color: #fff !important;
+  background-color: #fff !important;
 }
 
 md-tabs-canvas{
@@ -3185,4 +3201,28 @@ md-tabs-canvas{
 
 md-tabs .md-tab.md-active, md-tabs .md-tab.md-focused{
   color: #ffffff;
+}
+
+md-tabs{
+  border-radius: 0 !important;
+}
+
+.rating {
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+ul.rating {
+  display: inline-block;
+}
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.rating .filled {
+  color: #4caf50;
 }

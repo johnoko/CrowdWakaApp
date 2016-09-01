@@ -1,0 +1,65 @@
+<ion-view title="My Ratings" id="rides-offered-page">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <ion-content scroll="true" id="ratings-view">
+        <div class="total-rating">
+            <h3>{{name.full}}</h3>
+            <rating-stars ng-model="irating" max="ratingmax"></rating-stars>
+        </div>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Received">
+                <md-content class="md-padding">
+                    <div ng-hide="nothingfound">
+                        <h5 class="text-center soft">{{count}}</h5>
+                    </div>
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-repeat="rating in ratings">
+                            <img ng-src="{{rating.img}}" class="md-avatar" />
+                            <div class="md-list-item-text">
+                                <h3 style="text-transform: capitalize;">{{rating.vFirstName}} {{rating.vLastName}}</h3>
+                                <div>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 1,'ion-android-star-outline': rating.iRate < 1}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 2,'ion-android-star-outline': rating.iRate < 2}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 3,'ion-android-star-outline': rating.iRate < 3}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 4,'ion-android-star-outline': rating.iRate < 4}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 5,'ion-android-star-outline': rating.iRate < 5}"></i>
+                                    <p style="display: inline; margin-left: 10px; font-size: 11px;">{{rating.dAddedDate}}</p>
+                                </div>
+                                <p>{{ rating.tFeedback }}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </md-tab>
+            <md-tab label="Ratings Given">
+                <md-content class="md-padding">
+                    <div ng-hide="nothingfoundingiven">
+                        <h5 class="text-center soft">{{countGiven}}</h5>
+                    </div>
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-repeat="rating in ratings_given">
+                            <img ng-src="{{rating.img}}" class="md-avatar" />
+                            <div class="md-list-item-text">
+                                <h3 style="text-transform: capitalize;">{{rating.vFirstName}} {{rating.vLastName}}</h3>
+                                <div>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 1,'ion-android-star-outline': rating.iRate < 1}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 2,'ion-android-star-outline': rating.iRate < 2}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 3,'ion-android-star-outline': rating.iRate < 3}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 4,'ion-android-star-outline': rating.iRate < 4}"></i>
+                                    <i class="ion" ng-class="{'ion-android-star': rating.iRate >= 5,'ion-android-star-outline': rating.iRate < 5}"></i>
+                                    <p style="display: inline; margin-left: 10px; font-size: 11px;">{{rating.dAddedDate}}</p>
+                                </div>
+                                <p>{{ rating.tFeedback }}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </ion-content><!--end expense content section-->
+</ion-view>
