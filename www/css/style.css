@@ -2134,3 +2134,41 @@ ul.rating {
 
 .rating .filled {
   color: #4caf50; }
+
+.list .item.item-thumbnail-left {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12); }
+
+#car-details {
+  padding: 0 21px 0 21px; }
+
+input, .md-select-label {
+  width: 100%; }
+
+md-select {
+  padding-bottom: 0 !important; }
+
+/* when hiding the picture */
+.ng-hide-add {
+  animation: 0.5s fadeOut ease; }
+
+/* when showing the picture */
+.ng-hide-remove {
+  animation: 0.5s fadeIn ease; }
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    height: 0; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    height: 0; }
+  to {
+    opacity: 1; } }

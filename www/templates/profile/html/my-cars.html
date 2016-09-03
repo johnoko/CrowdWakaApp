@@ -6,7 +6,77 @@
         </a>
     </ion-nav-buttons><!--end left button on navigation bar-->
 
-    <ion-content scroll="true">
+    <ion-content scroll="true" id="car-details">
+        <md-content class="md-padding">
+            <h4 class="text-center soft" ng-hide="showcarform" style="margin: 30px 20px 15px 20px;">Below is a list of all your cars. Tap on them to edit them.</h4>
+            <div class="text-center" ng-hide="showcarform" style="margin: 0 20px 15px 20px;"><a class="social-button md-button md-default-theme material-background" style="width: 155px;" ng-click="gotoaddride()">Add new Car</a></div>
+            <div class="list" ng-repeat="car in userdets.cars" ng-click="showEditFrom(car)" ng-hide="showcarform">
+                <a class="item item-thumbnail-left" href="#">
+                    <img src="{{car.vImage}}">
+                    <h2>{{car.vMake}}</h2>
+                    <p>{{car.vModel}}</p>
+                    <p>{{car.vPlateno}}</p>
+                </a>
+            </div>
 
+
+            <div class="edit-form" ng-show="showcarform">
+                <h4 class="text-center soft" style="margin: 30px 20px 15px 20px;">Edit your Car details.</h4>
+                <p class="text-center soft">{{c.vMake}} {{c.vModel}}</p>
+                <form ng-submit="editCar(c)">
+                    <md-input-container md-no-float="">
+                        <div>
+                            <input ng-model="c.vPlateno" placeholder="Plate Number">
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container md-no-float="">
+                        <md-select ng-model="c.iMakeId" aria-label="md-option" placeholder="Select your car's make" ng-change="getCarModel(c.iMakeId)">
+                            <md-option ng-repeat="make in makes" ng-value="make.iMakeId">{{make.vMake}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container md-no-float="" ng-show="makeselected">
+                        <md-select ng-model="c.iModelId" aria-label="md-option" placeholder="Select your car's model">
+                            <md-option ng-repeat="model in models" ng-value="model.iModelId">{{model.vTitle}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container md-no-float="">
+                        <md-select ng-model="c.eComfort" aria-label="md-option" placeholder="Select Air Conditioning">
+                            <md-option value="Available">Air Conditioning Available</md-option>
+                            <md-option value="Not Available">Air Conditioning Not Available</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container md-no-float="">
+                        <md-select ng-model="c.iSeats" aria-label="md-option" placeholder="Number of seats (excluding driver)">
+                            <md-option ng-repeat="s in seats" ng-value="s">{{s}} seats</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container md-no-float="">
+                        <md-select ng-model="c.iColourId" aria-label="md-option" placeholder="Car's color">
+                            <md-option ng-repeat="c in colors" ng-value="c.iColourId">{{c.vColour}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container md-no-float="">
+                        <md-select ng-model="c.iCarTypeId" aria-label="md-option" placeholder="Car type">
+                            <md-option ng-repeat="t in types" ng-value="t.iCarTypeId">{{t.vTitle}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <input type="hidden" ng-model="c.iMemberCarId">
+
+                    <div class="text-center">
+                        <button class="md-raised social-button md-button md-default-theme material-background">Edit Car Info</button>
+                        <br/>
+                        <br/>
+                        <a ng-click="backtolist()"><i class="ion ion-arrow-left-c"></i> Back to list</a>
+                    </div>
+                </form>
+            </div>
+        </md-content>
     </ion-content><!--end expense content section-->
 </ion-view>

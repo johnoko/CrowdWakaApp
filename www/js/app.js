@@ -53,7 +53,7 @@ window.globalVariable = {
 };// End Global variable
 
 
-angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova', 'ion-google-place', 'ionic-rating-stars', 'base64', 'onezone-datepicker'])
+angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova', 'ion-google-place', 'ionic-rating-stars', 'base64', 'onezone-datepicker', 'ngAnimate'])
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet) {
 
         //Create database table of contracts by using sqlite database.
@@ -1000,6 +1000,34 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     'menuContent': {
                         templateUrl: "templates/profile/html/my-cars.html",
                         controller: "carCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
+            .state('app.addCar', {
+                url: "/profile/addcar",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/add-new-car.html",
+                        controller: "carCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
+            .state('app.editCar', {
+                url: "/profile/editcar",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/edit-car.html",
+                        controller: "editCarCtrl"
                     }
                 },
                 onEnter: function ($state, Auth) {
