@@ -35,8 +35,8 @@
                                 </div>
                                 <div class="spacer" style="height: 20px;"></div>
                                 <div class="text-center" ng-hide="isPast(d.dBookingDate,d.dBookingTime)">
-                                    <a class="md-raised social-button md-button md-default-theme material-background">Enter Validation Code</a>
-                                    <a class="md-raised social-button md-button md-default-theme material-background">Give Rating</a>
+                                    <a ng-show="d.eBookerConfirmation === 'No'" ng-click="showConfirmationPopup(d.iBookingId)" class="md-raised social-button md-button md-default-theme material-background">Enter Validation Code</a>
+                                    <a ng-show="!d.ratingid" ng-click="showRatingPopupasDriver(d.iBookingId,d.vBookerFirstName,d.vBookerLastName,d.vBookerEmail,d.iBookerId,personal_info.rating,d.iRideId)" class="md-raised social-button md-button md-default-theme material-background">Give Rating</a>
                                 </div>
                             </div>
                         </md-card-content>
@@ -47,16 +47,37 @@
                 <md-content class="md-padding">
                     <md-card ng-repeat="b in bookersdetails">
                         <md-card-content>
-                            <h2 class="md-title">Paracosm</h2>
-                            <p>
-                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-                            </p>
+                            <h2 class="md-title booking-title" ng-click="toggleBooking(b.iBookingId)">{{b.vFromPlace}} <i class="ion ion-arrow-right-c"></i> {{b.vToPlace}}</h2><small class="green-text">Booking No. {{b.vBookingNo}}</small>
+                            <div class="spacer" style="height: 10px;"></div>
+                            <div class="soft"><i class="ion ion-calendar"></i> {{b.dBookingDate}} @ {{b.dBookingTime}}</div>
+                            <div class="soft"><i class="ion ion-android-car"></i> {{b.iNoOfSeats}} seat<span ng-show="b.iNoOfSeats > 1">s</span> booked</div>
+                            <div>
+                                <strong>Verification Code:</strong> {{b.vVerificationCode}}<br/>
+                                <small>Only give this to the driver once the ride is complete and you are at your destination. Do not forget to rate the ride.</small>
+                            </div>
+
+                            <div class="more-content" ng-show="isBookingShown(b.iBookingId)">
+                                <div class="row">
+                                    <div class="col col-67">
+                                        <h4>Driver Details</h4>
+                                        <i class="ion ion-person soft mr"></i>{{b.vDriverFirstName}} {{b.vDriverLastName}}<br/>
+                                        <i class="ion ion-iphone soft mr"></i>{{b.vDriverPhone}}<br/>
+                                        <i class="ion ion-email soft mr"></i>{{b.vDriverEmail}}
+                                    </div>
+                                    <div class="col col-33">
+                                        <h4>Status</h4>
+                                        Payment <i class="ion ion-checkmark green-text" ng-show="b.eBookerPaymentPaid === 'Yes'"></i> <i class="ion ion-close red-text" ng-show="b.eBookerPaymentPaid === 'No'"></i><br/>
+                                        Booking {{b.eStatus}}<br/>
+                                        <span ng-show="b.eBookerPaymentPaid === 'Yes'" style="color:#4caf50; font-weight: bold;">NGN {{b.fAmount}}</span>
+                                        <span ng-show="b.eBookerPaymentPaid != 'Yes'"  style="color:red; font-weight: bold;">NGN {{b.fAmount}}</span>
+                                    </div>
+                                </div>
+                                <div class="spacer" style="height: 20px;"></div>
+                                <div class="text-center" ng-hide="isPast(b.dBookingDate,b.dBookingTime)">
+                                    <a ng-show="!b.ratingid" ng-click="showRatingPopupasBooker(b.iBookingId,b.vDriverFirstName,b.vDriverLastName,b.vDriverEmail,b.iDriverId,personal_info.rating,b.iRideId)" class="md-raised social-button md-button md-default-theme material-background">Rate Driver</a>
+                                </div>
+                            </div>
                         </md-card-content>
-                        <div class="md-actions" layout="row" layout-align="end center">
-                            <md-button>Action 1</md-button>
-                            <md-button>Action 2</md-button>
-                        </div>
                     </md-card>
                 </md-content>
             </md-tab>
