@@ -1100,6 +1100,20 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         controller: "profileViewCtrl"
                     }
                 }
+            })
+            .state('app.mybookings', {
+                url: "/my-bookings",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/bookings/html/my-bookings.html",
+                        controller: "bookingsCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
             });// End $stateProvider
 
         //Use $urlRouterProvider.otherwise(Url);

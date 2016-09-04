@@ -3241,6 +3241,34 @@ md-select{
   padding-bottom: 0 !important;
 }
 
+#my-bookings-page{
+  .green-text{
+    color: #4caf50 !important;
+  }
+  .red-text{
+    color: red !important;
+  }
+  .md-title.booking-title{
+    font-size: 18px;
+    display: inline;
+    margin-right: 10px;
+    line-height: 25px;
+  }
+  .more-content{
+    margin-top: 10px;
+  }
+  .row,.col{
+    padding: 0px;
+  }
+  .ion-checkmark{
+    margin-left: 10px;
+  }
+  .mr{
+    margin-right: 5px;
+  }
+}
+
+
 /* when hiding the picture */
 .ng-hide-add         { animation:0.5s fadeOut ease; }
 

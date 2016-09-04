@@ -2149,6 +2149,30 @@ input, .md-select-label {
 md-select {
   padding-bottom: 0 !important; }
 
+#my-bookings-page .green-text {
+  color: #4caf50 !important; }
+
+#my-bookings-page .red-text {
+  color: red !important; }
+
+#my-bookings-page .md-title.booking-title {
+  font-size: 18px;
+  display: inline;
+  margin-right: 10px;
+  line-height: 25px; }
+
+#my-bookings-page .more-content {
+  margin-top: 10px; }
+
+#my-bookings-page .row, #my-bookings-page .col {
+  padding: 0px; }
+
+#my-bookings-page .ion-checkmark {
+  margin-left: 10px; }
+
+#my-bookings-page .mr {
+  margin-right: 5px; }
+
 /* when hiding the picture */
 .ng-hide-add {
   animation: 0.5s fadeOut ease; }

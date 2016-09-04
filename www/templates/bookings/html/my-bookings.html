@@ -1,0 +1,65 @@
+<ion-view title="My Bookings" id="my-bookings-page">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <ion-content scroll="true">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="As a Driver">
+                <md-content class="md-padding">
+                    <md-card ng-repeat="d in driversdetails">
+                        <md-card-content>
+                            <h2 class="md-title booking-title" ng-click="toggleBooking(d.iBookingId)">{{d.vFromPlace}} <i class="ion ion-arrow-right-c"></i> {{d.vToPlace}}</h2><small class="green-text">Booking No. {{d.vBookingNo}}</small>
+                            <div class="spacer" style="height: 10px;"></div>
+                            <div class="soft"><i class="ion ion-calendar"></i> {{d.dBookingDate}} @ {{d.dBookingTime}}</div>
+                            <div class="soft"><i class="ion ion-android-car"></i> {{d.iNoOfSeats}} seat<span ng-show="d.iNoOfSeats > 1">s</span> booked</div>
+
+                            <div class="more-content" ng-show="isBookingShown(d.iBookingId)">
+                                <div class="row">
+                                    <div class="col col-67">
+                                        <h4>Booking Details</h4>
+                                        <i class="ion ion-person soft mr"></i>{{d.vBookerFirstName}} {{d.vBookerLastName}}<br/>
+                                        <i class="ion ion-iphone soft mr"></i>{{d.vBookerPhone}}<br/>
+                                        <i class="ion ion-email soft mr"></i>{{d.vBookerEmail}}
+                                    </div>
+                                    <div class="col col-33">
+                                        <h4>Status</h4>
+                                        Payment <i class="ion ion-checkmark green-text" ng-show="d.eBookerPaymentPaid === 'Yes'"></i> <i class="ion ion-close red-text" ng-show="d.eBookerPaymentPaid === 'No'"></i><br/>
+                                        Booking {{d.eStatus}}<br/>
+                                        <span ng-show="d.eBookerPaymentPaid === 'Yes'" style="color:#4caf50; font-weight: bold;">NGN {{d.fAmount}}</span>
+                                        <span ng-show="d.eBookerPaymentPaid != 'Yes'"  style="color:red; font-weight: bold;">NGN {{d.fAmount}}</span>
+                                    </div>
+                                </div>
+                                <div class="spacer" style="height: 20px;"></div>
+                                <div class="text-center" ng-hide="isPast(d.dBookingDate,d.dBookingTime)">
+                                    <a class="md-raised social-button md-button md-default-theme material-background">Enter Validation Code</a>
+                                    <a class="md-raised social-button md-button md-default-theme material-background">Give Rating</a>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </md-content>
+            </md-tab>
+            <md-tab label="As a Passenger">
+                <md-content class="md-padding">
+                    <md-card ng-repeat="b in bookersdetails">
+                        <md-card-content>
+                            <h2 class="md-title">Paracosm</h2>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+                        <div class="md-actions" layout="row" layout-align="end center">
+                            <md-button>Action 1</md-button>
+                            <md-button>Action 2</md-button>
+                        </div>
+                    </md-card>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </ion-content><!--end expense content section-->
+</ion-view>
