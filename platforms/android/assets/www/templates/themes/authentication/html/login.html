@@ -1,0 +1,47 @@
+<!--View Information-->
+<!--View name : Fake Login-->
+<!--State name : app.fakeLogin-->
+<!--URL : #app/fakeLogin-->
+
+<ion-view title="Sign In" hide-nav-bar="true">
+    <!--left button on navigation bar-->
+    <!--<ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons>--><!--end left button on navigation bar-->
+
+    <!--login content section-->
+    <ion-content id="social-login" class="bg-white">
+        <!--fake login form section-->
+        <form class="fakeLogin-form" ng-submit="login(login)">
+            <div>
+                <img src="img/app_icon.png"/>
+            </div>
+            <div ng-show="isLoginFailed==1" style="background:red; color:white; padding:10px; width:auto" >Login Failed - Try again!</div>
+            <div ng-show="isLoginFailed==1" style="margin-bottom:20px; font-size:90%"><a href="#/app/recoverPassword">Recover Password</a></div>
+            <div class="sub-header"><strong>Sign in to CrowdWaka</strong></div>
+
+            <div id="fakeLogin">
+                <md-input-container md-no-float="">
+                    <input class="user-name"  type="email"  required placeholder="Registered Email" ng-model="login.email">
+                </md-input-container>
+                <hr/>
+                <md-input-container md-no-float="">
+                    <input class="user-password"  type="password" required placeholder="Password" ng-model="login.password">
+                </md-input-container>
+            </div>
+            <div>
+                <button type="submit" class="social-button md-button md-default-theme material-background">Sign In</button>
+
+                <a class="md-raised social-button md-button md-default-theme facebook-background">
+                    Login with Facebook
+                </a>
+
+                <div class="dhp">
+                    Don't have an account? <a href="#/app/signUp">Sign Up</a>
+                </div>
+            </div>
+        </form> <!--end fake login form section-->
+    </ion-content><!--end login content section-->
+</ion-view>

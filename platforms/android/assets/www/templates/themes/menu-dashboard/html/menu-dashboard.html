@@ -1,0 +1,99 @@
+<!--View Information-->
+<!--View name : Menu Dashboard-->
+<!--Controller name : menuDashboardCtrl-->
+<!--Controller path : www/templates/themes/menu-dashboard/js/controllers.js-->
+<!--State name : app.menuDashboard-->
+<!--URL : #app/menuDashboard-->
+
+<ion-view title="Dashboard" ion-side-menus enable-menu-with-back-views="true">
+    <!--menu dashboard section-->
+    <ion-content id="menu-dashboard-content">
+        <!--panel section-->
+        <div class="menu-panel">
+            <div class="row">
+                <div class="col-33" ng-click="letsGo('app.findRide')">
+                    <i class="fa fa-search"></i>
+
+                    <p>Find Ride</p>
+                </div>
+                <div class="col-33" ng-click="letsGo('app.catalog')">
+                    <i class="fa fa-taxi"></i>
+
+                    <p>Offer Ride</p>
+                </div>
+                <div class="col-33" ng-click="letsGo('app.ridesOffered')">
+                    <i class="fa fa-tachometer"></i>
+
+                    <p>Rides Offered</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-33" ng-click="showToast('Video')">
+                    <i class="fa fa-calendar-check-o"></i>
+
+                    <p>My Bookings</p>
+                </div>
+                <div class="col-33" ng-click="showToast('Setting')">
+                    <i class="fa fa-car"></i>
+
+                    <p>My Cars</p>
+                </div>
+                <div class="col-33" ng-click="showToast('Contract')">
+                    <i class="fa fa-star-half-o"></i>
+
+                    <p>Rating</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-33" ng-click="showToast('Inbox')">
+                    <i class="fa fa-bell-o"></i>
+
+                    <p>Email Alerts</p>
+                </div>
+                <div class="col-33" ng-click="showToast('Card')">
+                    <i class="fa fa-sliders"></i>
+
+                    <p>Settings</p>
+                </div>
+                <div class="col-33" ng-click="signout()">
+                    <i class="fa fa-sign-out"></i>
+                    <p>Sign Out</p>
+                </div>
+            </div>
+        </div><!--end panel section-->
+
+        <!--panel footer section-->
+        <div class="menu-dashboard-footer">
+            <md-whiteframe class="md-whiteframe-z1" layout ng-click="letsGo('app.profile')">
+                <div class="row">
+                    <div class="col-10">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="col-80">
+                        Profile
+                    </div>
+                    <div class="col-10">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </md-whiteframe>
+
+            <md-whiteframe class="md-whiteframe-z1" layout ng-click="showToast('Google Connect')">
+                <div class="row">
+                    <div class="col-10">
+                        <i class="fa fa-envelope-o"></i>
+                    </div>
+                    <div class="col-80">
+                        Messages
+                    </div>
+                    <div class="col-10">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </md-whiteframe>
+
+        </div><!--end panel footer section-->
+    </ion-content><!--Menu dashboard section-->
+</ion-view>

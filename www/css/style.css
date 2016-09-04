@@ -1359,7 +1359,7 @@ md-sidenav {
         padding-left: 10px; }
 
 #expense-dashboard .toolbar-expense {
-  max-height: 260px !important;
+  max-height: 280px !important;
   height: 260px !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
   #expense-dashboard .toolbar-expense div {
@@ -1377,6 +1377,31 @@ md-sidenav {
     color: white;
     font-size: 28px !important; }
   #expense-dashboard .toolbar-expense img.user-img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: 0; }
+
+#expense-dashboard .toolbar-ride {
+  background: #b30c0c;
+  max-height: 280px !important;
+  height: 280px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
+  #expense-dashboard .toolbar-ride div {
+    padding: 26px 10px 10px 10px;
+    text-align: center;
+    height: inherit !important; }
+  #expense-dashboard .toolbar-ride h1 {
+    color: white;
+    font-size: 30px;
+    font-weight: 400; }
+  #expense-dashboard .toolbar-ride h2 {
+    color: white;
+    font-size: 16px; }
+  #expense-dashboard .toolbar-ride h3 {
+    color: white;
+    font-size: 28px !important; }
+  #expense-dashboard .toolbar-ride img.user-img {
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -1449,6 +1474,8 @@ md-sidenav {
         #expense-dashboard #expense-dashboard-content .menu-panel .row .col-25 p {
           font-size: 12px;
           font-weight: 500; }
+  #expense-dashboard #expense-dashboard-content .viewride-list {
+    margin-top: -20px; }
 
 #expense-dashboard .srating {
   margin-top: 5px;
@@ -1874,10 +1901,21 @@ md-sidenav {
     text-align: center; }
   #find-ride img {
     width: 92px; }
+  #find-ride .button.button-positive.button-outline {
+    background: transparent;
+    color: #4caf50;
+    border: 1px dashed #4caf50;
+    width: auto;
+    padding: 0 10px;
+    min-height: 0;
+    margin: 0 auto 20px auto; }
 
 .soft-header {
   color: #808080 !important;
   font-weight: bold !important; }
+
+.soft {
+  color: #808080 !important; }
 
 .bar-header.item-input-inset {
   background: #ff0000;
@@ -1952,3 +1990,209 @@ hr {
   font-style: italic !important;
   border: none !important;
   font-size: 10px !important; }
+
+#find-ride md-list-item .md-list-item-text h3 {
+  line-height: 21px;
+  font-size: 14px; }
+
+.animate-hide {
+  height: 10px;
+  -webkit-transition: height 2s;
+  -moz-transition: height 2s;
+  -ms-transition: height 2s;
+  -o-transition: height 2s;
+  transition: height 2s;
+  overflow: hidden; }
+
+bar.bar-custom, bar.bar-custom .bar.bar-positive, .bar-custom .nav-bar-block ion-header-bar {
+  border-color: #b30c0c !important;
+  background-color: #b30c0c !important;
+  background-image: linear-gradient(0deg, #b30c0c, #b30c0c 50%, transparent 50%) !important; }
+
+#ratings-view .total-rating {
+  padding: 40px 10px 10px 10px;
+  text-align: center;
+  background: #4caf50; }
+
+#ratings-view .total-rating h3 {
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 200; }
+
+#ratings-view .total-rating rating-stars {
+  color: #fff; }
+
+#ratings-view .total-rating rating-stars i {
+  font-size: 21px !important; }
+
+#rides-list-view .ride, #rides-list-view-tab-2 .ride, #find-ride .ride {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
+#rides-list-view .ride .ride-title, #rides-list-view-tab-2 .ride .ride-title, #find-ride .ride .ride-title {
+  padding: 4px 6px;
+  border-bottom: 1px solid #ccc; }
+
+#rides-list-view .ride .ride-title img, #rides-list-view-tab-2 .ride .ride-title img, #find-ride .ride .ride-title img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  float: left; }
+
+#rides-list-view .ride .ride-title h3, #rides-list-view-tab-2 .ride .ride-title h3, #find-ride .ride .ride-title h3 {
+  margin: 4px 0 0 0 !important;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 21px; }
+
+#rides-list-view .ride .ride-details-short, #rides-list-view-tab-2 .ride .ride-details-short, #find-ride .ride .ride-details-short {
+  padding: 4px 6px; }
+
+#rides-list-view .ride .ride-details-short .ride-att, #rides-list-view-tab-2 .ride .ride-details-short .ride-att, #find-ride .ride .ride-details-short .ride-att {
+  float: left;
+  width: 60%; }
+
+#rides-list-view .ride .ride-details-short .ride-dates, #rides-list-view-tab-2 .ride .ride-details-short .ride-dates, #find-ride .ride .ride-details-short .ride-dates {
+  float: right;
+  width: 30%;
+  border-left: 1px solid #cccccc;
+  margin-left: 10px;
+  height: 45px; }
+
+#rides-list-view .ride .ride-details-short .ride-dates .day, #rides-list-view-tab-2 .ride .ride-details-short .ride-dates .day, #find-ride .ride .ride-details-short .ride-dates .day {
+  float: left;
+  width: 30%;
+  font-size: 20px;
+  margin-left: 15px;
+  color: #4caf50; }
+
+#rides-list-view .ride .ride-details-short .ride-dates .monthandyear, #rides-list-view-tab-2 .ride .ride-details-short .ride-dates .monthandyear, #find-ride .ride .ride-details-short .ride-dates .monthandyear {
+  float: right;
+  width: 50%;
+  /*text-align: right;*/
+  color: #4caf50; }
+
+#rides-list-view .ride .ride-footer, #rides-list-view-tab-2 .ride .ride-footer, #find-ride .ride .ride-footer {
+  border-top: 1px solid #ccc; }
+
+#rides-list-view .ride .ride-footer div.dets, #rides-list-view-tab-2 .ride .ride-footer div.dets, #find-ride .ride .ride-footer div.dets {
+  float: left;
+  width: 69% !important;
+  padding: 4px 6px; }
+
+#rides-list-view .ride .ride-footer div.ride-price, #rides-list-view-tab-2 .ride .ride-footer div.ride-price, #find-ride .ride .ride-footer div.ride-price {
+  float: left;
+  width: 31% !important;
+  padding: 5px 6px;
+  text-align: right;
+  background: #00a859; }
+
+#rides-list-view .ride .ride-footer div.ride-price h4, #rides-list-view-tab-2 .ride .ride-footer div.ride-price h4, #find-ride .ride .ride-footer div.ride-price h4 {
+  color: #ffffff !important;
+  padding: 2px 0; }
+
+#rides-list-view .ride .ride-footer div h4, #rides-list-view-tab-2 .ride .ride-footer div h4, #find-ride .ride .ride-footer div h4 {
+  font-size: 13px !important;
+  font-weight: bold;
+  margin: 0 !important; }
+
+#rides-list-view md-content, #rides-list-view-tab-2 md-content, #find-ride md-content {
+  padding: 20px !important; }
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+  color: #fff !important;
+  background-color: #fff !important; }
+
+md-tabs-canvas {
+  background: #4caf50 !important; }
+
+md-tabs .md-tab.md-active, md-tabs .md-tab.md-focused {
+  color: #ffffff; }
+
+md-tabs {
+  border-radius: 0 !important; }
+
+.rating {
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0; }
+
+ul.rating {
+  display: inline-block; }
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer; }
+
+.rating .filled {
+  color: #4caf50; }
+
+.list .item.item-thumbnail-left {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12); }
+
+#car-details {
+  padding: 0 21px 0 21px; }
+
+input, .md-select-label {
+  width: 100%; }
+
+md-select {
+  padding-bottom: 0 !important; }
+
+#my-bookings-page .green-text {
+  color: #4caf50 !important; }
+
+#my-bookings-page .red-text {
+  color: red !important; }
+
+#my-bookings-page .md-title.booking-title {
+  font-size: 18px;
+  display: inline;
+  margin-right: 10px;
+  line-height: 25px; }
+
+#my-bookings-page .more-content {
+  margin-top: 10px; }
+
+#my-bookings-page .row, #my-bookings-page .col {
+  padding: 0px; }
+
+#my-bookings-page .ion-checkmark {
+  margin-left: 10px; }
+
+#my-bookings-page .mr {
+  margin-right: 5px; }
+
+/* when hiding the picture */
+.ng-hide-add {
+  animation: 0.5s fadeOut ease; }
+
+/* when showing the picture */
+.ng-hide-remove {
+  animation: 0.5s fadeIn ease; }
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    height: 0; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    height: 0; }
+  to {
+    opacity: 1; } }

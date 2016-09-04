@@ -53,7 +53,7 @@ window.globalVariable = {
 };// End Global variable
 
 
-angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova', 'ion-google-place', 'ionic-rating-stars', 'base64', 'onezone-datepicker'])
+angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova', 'ion-google-place', 'ionic-rating-stars', 'base64', 'onezone-datepicker', 'ngAnimate'])
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet) {
 
         //Create database table of contracts by using sqlite database.
@@ -238,6 +238,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             }
             return customStyle;
         }// End createCustomStyle
+
+        $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
+            console.log('stateChangeSuccess');
+            if (toState.changeColor) {
+                $rootScope.secColor = toState.changeColor;
+            } else {
+                $rootScope.secColor = false;
+            }
+        });
 
         // Add custom style while initial application.
         $rootScope.customStyle = createCustomStyle(window.globalVariable.startPage.state);
@@ -971,6 +980,62 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+            .state('app.ratings', {
+                url: "/profile/rating",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/my-ratings.html",
+                        controller: "ratingsCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
+            .state('app.mycars', {
+                url: "/profile/mycars",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/my-cars.html",
+                        controller: "carCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
+            .state('app.addCar', {
+                url: "/profile/addcar",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/add-new-car.html",
+                        controller: "carCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
+            .state('app.editCar', {
+                url: "/profile/editcar",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/profile/html/edit-car.html",
+                        controller: "editCarCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
+                    }
+                }
+            })
             .state('app.changePassword', {
                 url: "/profile/changePassword",
                 views: {
@@ -1008,12 +1073,45 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+            .state('app.viewRide', {
+                url: "/ride",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/ride/html/view-ride.html",
+                        controller: "rideCtrl"
+                    }
+                },
+                changeColor: 'viewride'
+            })
+            .state('app.ridesOffered', {
+                url: "/ride/offered",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/ride/html/ride-offered.html",
+                        controller: "rideCtrl"
+                    }
+                }
+            })
             .state('app.verify', {
                 url: "/verify",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/profile/html/verify-account.html",
                         controller: "profileViewCtrl"
+                    }
+                }
+            })
+            .state('app.mybookings', {
+                url: "/my-bookings",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/bookings/html/my-bookings.html",
+                        controller: "bookingsCtrl"
+                    }
+                },
+                onEnter: function ($state, Auth) {
+                    if(!Auth.isLoggedIn()){
+                        $state.go('app.Login');
                     }
                 }
             });// End $stateProvider

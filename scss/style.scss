@@ -2163,8 +2163,44 @@ md-sidenav {
 #expense-dashboard {
   //expense toolbar section
   .toolbar-expense {
-    max-height: 260px !important;
+    max-height: 280px !important;
     height: 260px !important;
+    box-shadow: 0 2px 6px $color_black_20;
+
+    div {
+      padding: 26px 10px 10px 10px;
+      text-align: center;
+      height: inherit !important;
+    }
+
+    h1 {
+      color: $color_white;
+      font-size: 30px;
+      font-weight: 400;
+    }
+
+    h2 {
+      color: $color_white;
+      font-size: 16px;
+    }
+
+    h3 {
+      color: $color_white;
+      font-size: 28px !important;
+    }
+    img.user-img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-top: 0;
+
+    }
+  }//end toolbar section
+
+  .toolbar-ride {
+    background: #b30c0c;
+    max-height: 280px !important;
+    height: 280px !important;
     box-shadow: 0 2px 6px $color_black_20;
 
     div {
@@ -2286,6 +2322,9 @@ md-sidenav {
         }
       }
     }//end panel section
+    .viewride-list{
+      margin-top:-20px;
+    }
   }//end expense content section
   .srating{
     margin-top: 5px;
@@ -2924,14 +2963,24 @@ md-sidenav {
   img {
     width: 92px;
   }
-  button.md-button{
-
+  .button.button-positive.button-outline{
+    background: transparent;
+    color: #4caf50;
+    border: 1px dashed #4caf50;
+    width: auto;
+    padding: 0 10px;
+    min-height: 0;
+    margin:0 auto 20px auto;
   }
 }
 
 .soft-header{
   color: #808080 !important;
   font-weight: bold !important;
+}
+
+.soft{
+  color: #808080 !important;
 }
 
 .bar-header.item-input-inset{
@@ -3018,4 +3067,234 @@ hr {
   font-style: italic !important;
   border: none !important;
   font-size: 10px !important;
+}
+
+#find-ride md-list-item .md-list-item-text h3{
+  line-height:21px;
+  font-size: 14px;
+}
+
+.animate-hide{
+  height: 10px;
+  -webkit-transition: height 2s;
+  -moz-transition: height 2s;
+  -ms-transition: height 2s;
+  -o-transition: height 2s;
+  transition: height 2s;
+  overflow: hidden;
+}
+
+bar.bar-custom, bar.bar-custom .bar.bar-positive, .bar-custom .nav-bar-block ion-header-bar {
+  border-color: #b30c0c !important;
+  background-color: #b30c0c !important;
+  background-image: linear-gradient(0deg, #b30c0c, #b30c0c 50%, transparent 50%) !important;
+}
+
+#ratings-view{
+  .total-rating{
+    padding: 40px 10px 10px 10px;
+    text-align: center;
+    background: #4caf50;
+  }
+  .total-rating h3{
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 200;
+  }
+  .total-rating rating-stars{
+    color: #fff;
+  }
+  .total-rating rating-stars i{
+    font-size: 21px !important;
+  }
+}
+
+#rides-list-view, #rides-list-view-tab-2, #find-ride{
+  .ride{
+    margin-top: 10px;
+    border:1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+  .ride .ride-title{
+    padding: 4px 6px;
+    border-bottom:1px solid #ccc;
+  }
+  .ride .ride-title img{
+    width: 50px;
+    height: 50px;
+    margin-right:10px;
+    float: left;
+  }
+  .ride .ride-title h3{
+    margin: 4px 0 0 0 !important;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 21px;
+  }
+  .ride .ride-details-short{
+    padding: 4px 6px;
+  }
+  .ride .ride-details-short .ride-att{
+    float: left;
+    width: 60%;
+  }
+  .ride .ride-details-short .ride-dates{
+    float: right;
+    width: 30%;
+    border-left: 1px solid #cccccc;
+    margin-left: 10px;
+    height: 45px;
+  }
+  .ride .ride-details-short .ride-dates .day{
+    float: left;
+    width: 30%;
+    font-size: 20px;
+    margin-left: 15px;
+    color: #4caf50;
+  }
+  .ride .ride-details-short .ride-dates .monthandyear{
+    float: right;
+    width: 50%;
+    /*text-align: right;*/
+    color: #4caf50;
+  }
+  .ride .ride-footer{
+    border-top: 1px solid #ccc;
+  }
+  .ride .ride-footer div.dets{
+    float: left;
+    width: 69% !important;
+    padding: 4px 6px;
+  }
+  .ride .ride-footer div.ride-price{
+    float: left;
+    width: 31% !important;
+    padding: 5px 6px;
+    text-align: right;
+    background: #00a859;
+  }
+  .ride .ride-footer div.ride-price h4{
+    color: #ffffff !important;
+    padding: 2px 0;
+  }
+  .ride .ride-footer div h4{
+    font-size: 13px !important;
+    font-weight: bold;
+    margin:0 !important;
+  }
+  md-content{
+    padding: 20px !important;
+  }
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+  color: #fff !important;
+  background-color: #fff !important;
+}
+
+md-tabs-canvas{
+  background: #4caf50 !important;
+}
+
+md-tabs .md-tab.md-active, md-tabs .md-tab.md-focused{
+  color: #ffffff;
+}
+
+md-tabs{
+  border-radius: 0 !important;
+}
+
+.rating {
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+ul.rating {
+  display: inline-block;
+}
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.rating .filled {
+  color: #4caf50;
+}
+.list .item.item-thumbnail-left{
+  background-color: rgb(255,255,255);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+}
+#car-details{
+  padding: 0 21px 0 21px;
+}
+input, .md-select-label{
+  width:100%;
+}
+md-select{
+  padding-bottom: 0 !important;
+}
+
+#my-bookings-page{
+  .green-text{
+    color: #4caf50 !important;
+  }
+  .red-text{
+    color: red !important;
+  }
+  .md-title.booking-title{
+    font-size: 18px;
+    display: inline;
+    margin-right: 10px;
+    line-height: 25px;
+  }
+  .more-content{
+    margin-top: 10px;
+  }
+  .row,.col{
+    padding: 0px;
+  }
+  .ion-checkmark{
+    margin-left: 10px;
+  }
+  .mr{
+    margin-right: 5px;
+  }
+}
+
+
+/* when hiding the picture */
+.ng-hide-add         { animation:0.5s fadeOut ease; }
+
+/* when showing the picture */
+.ng-hide-remove      { animation:0.5s fadeIn ease; }
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    height: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

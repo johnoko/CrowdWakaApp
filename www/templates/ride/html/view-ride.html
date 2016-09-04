@@ -1,0 +1,125 @@
+<ion-view title="Ride Details" id="expense-dashboard">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <ion-content scroll="true" id="expense-dashboard-content" ng-init="viewridedetails()">
+
+        <!--expense toolbar section-->
+        <md-toolbar class="bar-subheader bar-assertive md-tall md-secondary toolbar-ride">
+            <div>
+                <img ng-src="{{ridedetails.image}}" class="user-img"/>
+
+                <h2>{{ridedetails.vStartPoint}} <br/> <i class="fa fa-arrow-right" aria-hidden="true"></i> <br/> {{ridedetails.vEndPoint}}</h2>
+                <div class="text-center srating">
+                    <rating-stars ng-model="viewRideUserDetailsRating" max="viewRideUserDetailsRatingmax"></rating-stars>
+                    <br/>
+                    <i class="fa fa-comments color-green" ng-show="viewRideUserDetailRidePreferences.chattiness.title =='I love to chat'"></i>
+                    <i class="fa fa-comments color-yellow" ng-show="viewRideUserDetailRidePreferences.chattiness.title =='I talk depending on my mood'"></i>
+                    <i class="fa fa-comments color-red" ng-show="viewRideUserDetailRidePreferences.chattiness.title =='I\'m the quiet type :)'"></i>
+
+                    <i class="fa fa-fire color-green" ng-show="viewRideUserDetailRidePreferences.smoking.title =='Cigarette smoke doesn\'t bother me'"></i>
+                    <i class="fa fa-fire color-yellow" ng-show="viewRideUserDetailRidePreferences.smoking.title =='Depending on my mood'"></i>
+                    <i class="fa fa-fire color-red" ng-show="viewRideUserDetailRidePreferences.smoking.title =='No Smoking Please'"></i>
+
+                    <i class="fa fa-music color-green" ng-show="viewRideUserDetailRidePreferences.music.title =='It\'s all about the Playlist!'"></i>
+                    <i class="fa fa-music color-yellow" ng-show="viewRideUserDetailRidePreferences.music.title =='Depending on my mood'"></i>
+                    <i class="fa fa-music color-red" ng-show="viewRideUserDetailRidePreferences.music.title =='Silence is golden'"></i>
+
+                    <i class="fa fa-paw color-green" ng-show="viewRideUserDetailRidePreferences.pets.title =='Pets are welcomed'"></i>
+                    <i class="fa fa-paw color-yellow" ng-show="viewRideUserDetailRidePreferences.pets.title =='Depending on my mood'"></i>
+                    <i class="fa fa-paw color-red" ng-show="viewRideUserDetailRidePreferences.pets.title =='No pets in my Vehicle please'"></i>
+                </div>
+            </div>
+
+        </md-toolbar><!--end expense toolbar section-->
+
+        <!--expense content section-->
+
+
+        <div class="news-item pdecs">
+            <!--detail section-->
+            <div class="row detail">
+                <div class="col">
+                    <br/>
+                    <strong>Driver's Nickname:</strong> {{viewRideUserDetails.personal.vNickName}}
+                    <!--<h4 style="line-height: 25px;">{{ridedetails.vStartPoint}} <i class="fa fa-arrow-right" aria-hidden="true"></i> {{ridedetails.vEndPoint}}</h4>-->
+                    <p class="content">
+                        {{ridedetails.tDetails}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="list viewride-list">
+
+            <a class="item item-icon-left" href="#">
+                <i class="icon ion-card soft"></i>
+                Fare
+                <span class="item-note">
+                  {{ridedetails.price}}
+                </span>
+
+            </a>
+
+            <a class="item item-icon-left item-icon-right" href="#">
+                <i class="icon ion-android-time soft"></i>
+                Date and Time
+                <span class="badge badge-assertive">
+                  {{ridedetails.date}} {{ridedetails.time}}
+                </span>
+            </a>
+
+            <a class="item item-icon-left item-icon-right" href="#">
+                <i class="icon ion-person-stalker soft"></i>
+                Seats Available
+                <span class="badge badge-assertive">{{ridedetails.seats}}</span>
+            </a>
+
+            <a class="item item-icon-left" href="#">
+                <i class="icon ion-bag soft"></i>
+                Luggage Size
+                <span class="badge badge-assertive">
+                  {{ridedetails.eLuggageSize}}
+                </span>
+            </a>
+
+            <a class="item item-icon-left" href="#">
+                <i class="icon ion-paper-airplane soft"></i>
+                Scheduled Flexibility
+                <span class="item-note">{{ridedetails.eLeaveTime}}</span>
+            </a>
+
+            <a class="item item-icon-left" href="#">
+                <i class="icon ion-shuffle soft"></i>
+                Detours
+                <span class="item-note">{{ridedetails.detour}}</span>
+            </a>
+
+            <a ng-show="ridedetails.eLadiesOnly == 'Yes'" class="item item-icon-left" href="#">
+                <i class="icon ion-female soft"></i>
+                Ladies Only
+                <span class="badge badge-assertive">Yes</span>
+            </a>
+
+        </div>
+
+        <div style="padding: 10px; margin-top: -20px; background: #b30c0c; color: #fff;">Car Details</div>
+        <div class="list">
+            <a class="item item-thumbnail-left" href="#">
+                <img src="{{ridedetails.CarImage}}" style="width: 40% !important; height: auto !important;">
+                <h2>{{ridedetails.carname}}</h2>
+                <p><strong>Plate No.:</strong> {{ridedetails.vPlateno}}</p>
+                <p><strong>Color:</strong> {{ridedetails.carcolour}}</p>
+            </a>
+        </div>
+
+        <div class="text-center m-t-10">
+            <a class="social-button md-button md-default-theme material-background" ng-click="bookRide(ridedetails)">Book Ride</a>
+        </div>
+
+    </ion-content><!--end expense content section-->
+</ion-view>
